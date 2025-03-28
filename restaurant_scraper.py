@@ -165,9 +165,24 @@ def get_restaurant_info(restaurant_name, url):
 
     # Get current weekday (0 = Monday, 6 = Sunday)
     current_weekday = datetime.now().weekday()
-    weekday_names = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    weekday_names = ['Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag', 'Söndag']
     current_day = weekday_names[current_weekday]
-    formatted_date = datetime.now().strftime('%Y-%m-%d')
+    
+    # Format date in Swedish style
+    day_suffix = {1: 'a', 2: 'a', 3: 'e', 21: 'a', 22: 'a', 23: 'e', 31: 'a'}
+    day = datetime.now().day
+    suffix = day_suffix.get(day, 'e')
+    
+    # Swedish month names
+    month_names = {
+        1: 'januari', 2: 'februari', 3: 'mars', 4: 'april',
+        5: 'maj', 6: 'juni', 7: 'juli', 8: 'augusti',
+        9: 'september', 10: 'oktober', 11: 'november', 12: 'december'
+    }
+    month = month_names[datetime.now().month]
+    year = datetime.now().year
+    
+    formatted_date = f"{current_day} den {day}{suffix} {month} {year}"
 
     # Customize prompt based on restaurant
     if restaurant_name == "Restaurang Kolga":

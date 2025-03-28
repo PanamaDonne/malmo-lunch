@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lunch Deals</title>
+    <title>Dagens Lunch Malmö</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -32,7 +32,7 @@
 </head>
 <body>
     <div class="container py-5">
-        <h1 class="text-center mb-4">🍽️ Dagens</h1>
+        <h1 class="text-center mb-4">🍽️ Dagens Lunch Malmö</h1>
         <div id="last-updated" class="text-center mb-4"></div>
         
         <div class="row" id="deals-container">
@@ -41,6 +41,19 @@
     </div>
 
     <script>
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const weekdays = ['Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag', 'Söndag'];
+            const months = ['januari', 'februari', 'mars', 'april', 'maj', 'juni', 'juli', 'augusti', 'september', 'oktober', 'november', 'december'];
+            
+            const day = date.getDate();
+            const daySuffix = {
+                1: 'a', 2: 'a', 3: 'e', 21: 'a', 22: 'a', 23: 'e', 31: 'a'
+            }[day] || 'e';
+            
+            return `${weekdays[date.getDay()]} den ${day}${daySuffix} ${months[date.getMonth()]} ${date.getFullYear()}`;
+        }
+
         async function loadDeals() {
             try {
                 const response = await fetch('lunch_data.json');
@@ -62,7 +75,7 @@
                                     `<p class="card-text"><small>Inkluderar: ${deal.included_items.join(', ')}</small></p>` : ''}
                                 ${deal.special_notes ? 
                                     `<p class="card-text"><small>${deal.special_notes}</small></p>` : ''}
-                                <p class="card-text"><small>Hours: ${deal.lunch_hours}</small></p>
+                                <p class="card-text"><small>Öppettider: ${deal.lunch_hours}</small></p>
                             </div>
                         </div>
                     `;
@@ -71,7 +84,7 @@
 
                 // Update last updated time
                 const lastUpdated = document.getElementById('last-updated');
-                lastUpdated.textContent = `Last updated: ${new Date().toLocaleString()}`;
+                lastUpdated.textContent = `Senast uppdaterad: ${formatDate(new Date())}`;
             } catch (error) {
                 console.error('Error loading deals:', error);
             }
