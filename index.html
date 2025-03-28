@@ -32,7 +32,7 @@
 </head>
 <body>
     <div class="container py-5">
-        <h1 class="text-center mb-4">🍽️ Today's Lunch Deals</h1>
+        <h1 class="text-center mb-4">🍽️ Dagens</h1>
         <div id="last-updated" class="text-center mb-4"></div>
         
         <div class="row" id="deals-container">
@@ -59,7 +59,7 @@
                                 <p class="card-text">${deal.daily_special}</p>
                                 <p class="card-text price">${deal.price}</p>
                                 ${deal.included_items.length > 0 ? 
-                                    `<p class="card-text"><small>Included: ${deal.included_items.join(', ')}</small></p>` : ''}
+                                    `<p class="card-text"><small>Inkluderar: ${deal.included_items.join(', ')}</small></p>` : ''}
                                 ${deal.special_notes ? 
                                     `<p class="card-text"><small>${deal.special_notes}</small></p>` : ''}
                                 <p class="card-text"><small>Hours: ${deal.lunch_hours}</small></p>
