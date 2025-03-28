@@ -1,0 +1,15 @@
+[
+  {
+    "restaurant_name": "Bullen",
+    "daily_special": "Fläsknoisette Piccata Milanese med tomatsås och ris",
+    "price": "145 SEK",
+    "included_items": [
+      "Sallad",
+      "Måltidsdryck"
+    ],
+    "lunch_hours": "11:30-14:00",
+    "special_notes": "Sallad och måltidsdryck ingår, köp till kaffe eller te för 19kr",
+    "day_of_week": "Friday",
+    "date": "2025-03-28"
+  }
+]
