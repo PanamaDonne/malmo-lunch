@@ -35,12 +35,6 @@ Malmö daily special
 3. Email sent to subscribers
 4. Web interface displays current deals
 
-## Security
-- Environment variables for sensitive data
-- App-specific passwords for Gmail
-- Error handling throughout the system
-- Secure SMTP connections
-
 ## Automation
 - GitHub Actions for automated updates
 - Scheduled daily runs
