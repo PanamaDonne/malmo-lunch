@@ -11,5 +11,20 @@
     "special_notes": "Sallad och måltidsdryck ingår, köp till kaffe eller te för 19kr",
     "day_of_week": "Friday",
     "date": "2025-03-28"
+  },
+  {
+    "restaurant_name": "Restaurang Kolga",
+    "daily_special": "Kassler med svampsås, potatis och grönsakerRaggmunkar med Bacon och lingonsylt",
+    "price": "125 kr",
+    "included_items": [
+      "Dryck",
+      "Bröd",
+      "Sallad",
+      "Kaffe"
+    ],
+    "lunch_hours": "11:00-14:30",
+    "special_notes": "any special information",
+    "day_of_week": "Friday",
+    "date": "2025-03-28"
   }
 ]

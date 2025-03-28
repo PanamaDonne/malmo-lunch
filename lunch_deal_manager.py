@@ -1,4 +1,4 @@
-from manager import get_restaurant_info, save_lunch_data
+from restaurant_scraper import get_restaurant_info, save_lunch_data
 from lunch_deal_sender import LunchDealSender
 from datetime import datetime
 import json

@@ -1,7 +1,7 @@
 import schedule
 import time
-from manager import main as update_lunch_menu
-from email_sender import send_lunch_email
+from restaurant_scraper import main as update_lunch_menu
+from lunch_deal_sender import LunchDealSender
 import os
 from dotenv import load_dotenv
 
@@ -15,7 +15,8 @@ def scheduled_update():
         update_lunch_menu()
         
         # Send the email
-        send_lunch_email()
+        sender = LunchDealSender()
+        sender.send_lunch_deals()
         
     except Exception as e:
         print(f"Error in scheduled update: {e}")
