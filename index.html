@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dagens Lunch Malmö</title>
-    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <title>Dagens: Malmö</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         body {
             background-color: white;
-            font-family: 'Special Elite', cursive;
+            font-family: 'Oswald', sans-serif;
             line-height: 1.6;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
             color: black;
+        }
+        h1 {
+            font-weight: 500;
+            letter-spacing: 1px;
         }
         .restaurant {
             margin-bottom: 30px;
@@ -26,6 +30,7 @@
         .restaurant-name {
             font-size: 1.2em;
             margin-bottom: 5px;
+            font-weight: 500;
         }
         .restaurant-name a {
             color: black;
@@ -36,24 +41,28 @@
         }
         .daily-special {
             margin: 5px 0;
+            font-weight: 300;
         }
         .price {
             margin: 5px 0;
+            font-weight: 400;
         }
         .included {
             font-size: 0.9em;
             color: #666;
+            font-weight: 300;
         }
         .last-updated {
             text-align: right;
             font-size: 0.8em;
             color: #666;
-            margin-bottom: 30px;
+            margin-bottom: 50px;
+            font-weight: 300;
         }
     </style>
 </head>
 <body>
-    <h1>Dagens Lunch Malmö</h1>
+    <h1>Dagens: Malmö</h1>
     <div id="last-updated"></div>
     <div id="deals-container"></div>
 
