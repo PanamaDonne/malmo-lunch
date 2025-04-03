@@ -1,30 +1,65 @@
 [
   {
     "restaurant_name": "Bullen",
-    "daily_special": "Fläsknoisette Piccata Milanese med tomatsås och ris",
-    "price": "145 SEK",
+    "url": "https://www.bullen.nu/sv/lunch/",
+    "daily_special": "Rimmad oxbringa med pepparrotssås och ugnsbakade rotfrukter",
+    "price": "145 kr",
     "included_items": [
       "Sallad",
-      "Måltidsdryck"
+      "måltidsdryck"
     ],
-    "lunch_hours": "11:30-14:00",
-    "special_notes": "Sallad och måltidsdryck ingår, köp till kaffe eller te för 19kr",
-    "day_of_week": "Friday",
-    "date": "2025-03-28"
+    "lunch_hours": "lunch serving hours",
+    "special_notes": "any special information or notes",
+    "day_of_week": "Torsdag",
+    "date": "Torsdag den 3e april 2025"
   },
   {
-    "restaurant_name": "Restaurang Kolga",
-    "daily_special": "Kassler med svampsås, potatis och grönsakerRaggmunkar med Bacon och lingonsylt",
-    "price": "125 kr",
-    "included_items": [
-      "Dryck",
-      "Bröd",
-      "Sallad",
-      "Kaffe"
+    "restaurant_name": "Saltimporten",
+    "url": "https://www.saltimporten.com/",
+    "daily_special": [
+      "Oxtartar / Ramslök / Rabarber / Mandel"
     ],
-    "lunch_hours": "11:00-14:30",
-    "special_notes": "any special information",
-    "day_of_week": "Friday",
-    "date": "2025-03-28"
+    "price": "135 kr",
+    "included_items": [],
+    "lunch_hours": "11–14",
+    "special_notes": "",
+    "day_of_week": "Torsdag",
+    "date": "Torsdag den 3e april 2025"
+  },
+  {
+    "restaurant_name": "Välfärden",
+    "url": "https://valfarden.nu/dagens-lunch/",
+    "daily_special": [
+      "Salsiccia, smörbönor i långkokt tomatsås, saffranrostad fänkål & örtgrönt",
+      "Hoisinsvamp, sesam, salladslök, krossad gurka, chili & len sötpotatis- & morotskräm"
+    ],
+    "price": "115 kr",
+    "included_items": [
+      "vatten",
+      "salladsbuffé",
+      "bröd",
+      "smör",
+      "hummus",
+      "kaffe / te"
+    ],
+    "lunch_hours": "11:30 – 14:00",
+    "special_notes": "Alternativ kan finnas för intolerans, fråga i kassan. För vegetarisk alternativ, se meny",
+    "day_of_week": "Torsdag",
+    "date": "Torsdag den 3e april 2025"
+  },
+  {
+    "restaurant_name": "Friis 14",
+    "url": "https://www.friis14.com/lunch",
+    "daily_special": "Grekiska färsbiffar med tzatziki, fetaost & rostad potatis | Vegetarisk: Toskansk gryta med halloumi, kikärtor & basilika. Serveras med gnocchi",
+    "price": "159 kr",
+    "included_items": [
+      "Salladsbuffet",
+      "surdegsbröd",
+      "kaffe"
+    ],
+    "lunch_hours": "lunch serving hours",
+    "special_notes": "any special information or notes",
+    "day_of_week": "Torsdag",
+    "date": "Torsdag den 3e april 2025"
   }
 ]
