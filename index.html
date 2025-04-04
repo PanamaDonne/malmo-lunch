@@ -78,16 +78,19 @@
 
     <script>
         function formatDate(dateString) {
+            // Create date in Swedish timezone
             const date = new Date(dateString);
+            const swedishDate = new Date(date.toLocaleString('en-US', { timeZone: 'Europe/Stockholm' }));
+            
             const weekdays = ['Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag', 'Söndag'];
             const months = ['januari', 'februari', 'mars', 'april', 'maj', 'juni', 'juli', 'augusti', 'september', 'oktober', 'november', 'december'];
             
-            const day = date.getDate();
+            const day = swedishDate.getDate();
             const daySuffix = {
                 1: 'a', 2: 'a', 3: 'e', 21: 'a', 22: 'a', 23: 'e', 31: 'a'
             }[day] || 'e';
             
-            return `${weekdays[date.getDay()]} den ${day}${daySuffix} ${months[date.getMonth()]} ${date.getFullYear()}`;
+            return `${weekdays[swedishDate.getDay()]} den ${day}${daySuffix} ${months[swedishDate.getMonth()]} ${swedishDate.getFullYear()}`;
         }
 
         async function loadDeals() {
