@@ -65,9 +65,10 @@
         }
         .last-updated {
             text-align: right;
-            font-size: 0.8em;
+            font-size: 24px;
             color: #666;
-            font-weight: 400;
+            font-weight: 500;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -90,7 +91,11 @@
                 1: 'a', 2: 'a', 3: 'e', 21: 'a', 22: 'a', 23: 'e', 31: 'a'
             }[day] || 'e';
             
-            return `${weekdays[swedishDate.getDay()]} den ${day}${daySuffix} ${months[swedishDate.getMonth()]} ${swedishDate.getFullYear()}`;
+            // Adjust weekday index to make Monday = 0
+            let weekdayIndex = swedishDate.getDay();
+            weekdayIndex = weekdayIndex === 0 ? 6 : weekdayIndex - 1; // Convert Sunday (0) to 6, and shift other days back
+            
+            return `${weekdays[weekdayIndex]} den ${day}${daySuffix} ${months[swedishDate.getMonth()]} ${swedishDate.getFullYear()}`;
         }
 
         async function loadDeals() {
@@ -115,7 +120,17 @@
                             return item;
                         }).join('<br>');
                     } else {
-                        formattedSpecial = deal.daily_special.replace(' | ', '<br>');
+                        // Check if it's Välfärden (contains multiple lines)
+                        if (deal.restaurant_name === "Välfärden") {
+                            const parts = deal.daily_special.split('\n');
+                            if (parts.length > 1) {
+                                formattedSpecial = `${parts[0]}<br>Vegetarisk: ${parts[1]}`;
+                            } else {
+                                formattedSpecial = deal.daily_special.replace(' | ', '<br>');
+                            }
+                        } else {
+                            formattedSpecial = deal.daily_special.replace(' | ', '<br>');
+                        }
                     }
                     
                     div.innerHTML = `
@@ -134,8 +149,8 @@
                 const lastUpdated = document.getElementById('last-updated');
                 const pageTitle = document.getElementById('page-title');
                 const currentDate = formatDate(new Date());
-                lastUpdated.textContent = `Senast uppdaterad: ${currentDate}`;
-                pageTitle.textContent = `Dagens rätt - Malmö, ${currentDate.split(' ').slice(0, 4).join(' ')}`;
+                lastUpdated.textContent = `${currentDate}`;
+                pageTitle.textContent = 'Dagens rätt - Malmö';
             } catch (error) {
                 console.error('Error loading deals:', error);
             }
