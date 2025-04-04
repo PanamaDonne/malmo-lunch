@@ -8,8 +8,8 @@
       "Sallad",
       "måltidsdryck"
     ],
-    "lunch_hours": "lunch serving hours",
-    "special_notes": "any special information or notes",
+    "lunch_hours": "11:30-14:00",
+    "special_notes": "",
     "day_of_week": "Fredag",
     "date": "Fredag den 4e april 2025"
   },
@@ -17,17 +17,17 @@
     "restaurant_name": "Saltimporten",
     "url": "https://www.saltimporten.com/",
     "daily_special": "Smörrebröd / Lax / Citron / Sesam",
-    "price": "135 kr",
+    "price": "",
     "included_items": [],
-    "lunch_hours": "11–14",
+    "lunch_hours": "11:00-14:00",
     "special_notes": "",
     "day_of_week": "Fredag",
-    "date": "Fredag den 4e april 2025"
+    "date": "4 April 2025"
   },
   {
     "restaurant_name": "Välfärden",
     "url": "https://valfarden.nu/dagens-lunch/",
-    "daily_special": "Pulled porkburgare, rökig bbq-sås, kålslå, picklad lök & sesamrostad potatis - Getostbakade betor & rötter, rostad hasselnöt i brynt smör samt potatismos med färska örter & rostad vitlök",
+    "daily_special": "Pulled porkburgare, rökig bbq-sås, kålslå, picklad lök & sesamrostad potatis – Getostbakade betor & rötter, rostad hasselnöt i brynt smör samt potatismos med färska örter & rostad vitlök",
     "price": "115 kr",
     "included_items": [
       "vatten",
@@ -37,8 +37,8 @@
       "hummus",
       "kaffe / te"
     ],
-    "lunch_hours": "11:30 – 14:00",
-    "special_notes": "Intolerant? Fråga i kassan för alternativa alternativ.",
+    "lunch_hours": "11:30-14:00",
+    "special_notes": "",
     "day_of_week": "Fredag",
     "date": "Fredag den 4e april 2025"
   },
@@ -52,8 +52,24 @@
       "surdegsbröd",
       "kaffe"
     ],
-    "lunch_hours": "lunch serving hours",
-    "special_notes": "any special information or notes",
+    "lunch_hours": "11:30-14:00",
+    "special_notes": "",
+    "day_of_week": "Fredag",
+    "date": "Fredag den 4e april 2025"
+  },
+  {
+    "restaurant_name": "Clemens Kött",
+    "url": "https://www.clemenskott.se/",
+    "daily_special": "Tupp serveras med rotfruktspuré, rosépeppar sås, babyspenat och spetskålssallad",
+    "price": "135kr",
+    "included_items": [
+      "rotfruktspuré",
+      "rosépeppar sås",
+      "babyspenat",
+      "spetskålssallad"
+    ],
+    "lunch_hours": "11:30-14:00",
+    "special_notes": "",
     "day_of_week": "Fredag",
     "date": "Fredag den 4e april 2025"
   }

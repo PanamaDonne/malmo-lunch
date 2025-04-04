@@ -157,6 +157,146 @@ def get_friis_menu(soup, current_day):
         print(f"Error extracting Friis 14 menu: {e}")
         return None, []
 
+def get_valfarden_menu(soup, current_day):
+    """
+    Extract specific menu information from Välfärden's website
+    """
+    try:
+        # Get all text content
+        text = soup.get_text()
+        
+        # Split into lines and clean
+        lines = [line.strip() for line in text.split('\n') if line.strip()]
+        
+        # Debug print
+        print(f"Looking for {current_day}'s menu in Välfärden")
+        print("Available lines:", lines)
+        
+        # Find the current day's menu
+        for i, line in enumerate(lines):
+            if current_day in line:
+                print(f"Found {current_day} at line {i}")
+                # The menu item should be the next line
+                if i + 1 < len(lines):
+                    menu_text = lines[i + 1]
+                    # Skip if the line contains contact info or other non-menu text
+                    if not any(x in menu_text.lower() for x in ['tel:', 'email:', 'kontakt', 'intolerant']):
+                        # Split at "-" to separate regular and vegetarian options
+                        parts = menu_text.split('-', 1)
+                        if len(parts) == 2:
+                            regular_menu = parts[0].strip()
+                            vegetarian_menu = parts[1].strip()
+                            print(f"Found regular menu: {regular_menu}")
+                            print(f"Found vegetarian menu: {vegetarian_menu}")
+                            included_items = ["vatten", "salladsbuffé", "bröd", "smör", "hummus", "kaffe / te"]
+                            return f"{regular_menu}\nVegetarisk: {vegetarian_menu}", included_items
+                        else:
+                            # If no "-" found, just return the whole line as regular menu
+                            print(f"Found menu: {menu_text}")
+                            included_items = ["vatten", "salladsbuffé", "bröd", "smör", "hummus", "kaffe / te"]
+                            return menu_text, included_items
+        return None, []
+    except Exception as e:
+        print(f"Error extracting Välfärden menu: {e}")
+        return None, []
+
+def get_saltimporten_menu(soup, current_day):
+    """
+    Extract specific menu information from Saltimporten's website
+    """
+    try:
+        # Get all text content
+        text = soup.get_text()
+        
+        # Split into lines and clean
+        lines = [line.strip() for line in text.split('\n') if line.strip()]
+        
+        # Debug print
+        print(f"Looking for {current_day}'s menu in Saltimporten")
+        print("Available lines:", lines)
+        
+        # Find the current day's menu and vegetarian option
+        regular_menu = None
+        vegetarian_menu = None
+        
+        # First find the regular menu
+        for i, line in enumerate(lines):
+            if current_day in line:
+                print(f"Found {current_day} at line {i}")
+                # The menu item should be the next line
+                if i + 1 < len(lines):
+                    menu_text = lines[i + 1]
+                    # Skip if the line contains contact info or other non-menu text
+                    if not any(x in menu_text.lower() for x in ['tel:', 'email:', 'kontakt', 'öppet', 'hullkajen']):
+                        regular_menu = menu_text
+                        print(f"Found regular menu: {regular_menu}")
+                        break
+        
+        # Then find the vegetarian menu
+        for i, line in enumerate(lines):
+            if "VEGETARISKT" in line:
+                print(f"Found vegetarian section at line {i}")
+                # The vegetarian menu should be the next line
+                if i + 1 < len(lines):
+                    menu_text = lines[i + 1]
+                    # Skip if the line contains contact info or other non-menu text
+                    if not any(x in menu_text.lower() for x in ['tel:', 'email:', 'kontakt', 'öppet', 'hullkajen']):
+                        vegetarian_menu = menu_text
+                        print(f"Found vegetarian menu: {vegetarian_menu}")
+                        break
+        
+        # Combine the menus if we found both
+        if regular_menu and vegetarian_menu:
+            return f"{regular_menu}\nVegetarisk: {vegetarian_menu}", []
+        elif regular_menu:
+            return regular_menu, []
+        elif vegetarian_menu:
+            return f"Vegetarisk: {vegetarian_menu}", []
+        return None, []
+    except Exception as e:
+        print(f"Error extracting Saltimporten menu: {e}")
+        return None, []
+
+def get_clemens_menu(soup, current_day):
+    """
+    Extract specific menu information from Clemens Kött's website
+    """
+    try:
+        # Get all text content
+        text = soup.get_text()
+        
+        # Split into lines and clean
+        lines = [line.strip() for line in text.split('\n') if line.strip()]
+        
+        # Debug print
+        print(f"Looking for {current_day}'s menu in Clemens Kött")
+        print("Available lines:", lines)
+        
+        # Look for the current day's menu
+        for i, line in enumerate(lines):
+            if current_day in line:
+                print(f"Found {current_day} at line {i}")
+                # The menu item should be the next line
+                if i + 1 < len(lines):
+                    menu_text = lines[i + 1]
+                    # Skip if the line contains contact info or other non-menu text
+                    if not any(x in menu_text.lower() for x in ['tel:', 'email:', 'kontakt', 'öppet', 'gibraltargatan']):
+                        # Split at "-" if it exists to separate regular and vegetarian options
+                        parts = menu_text.split('-', 1)
+                        if len(parts) == 2:
+                            regular_menu = parts[0].strip()
+                            vegetarian_menu = parts[1].strip()
+                            print(f"Found regular menu: {regular_menu}")
+                            print(f"Found vegetarian menu: {vegetarian_menu}")
+                            return f"{regular_menu}\nVegetarisk: {vegetarian_menu}", []
+                        else:
+                            print(f"Found menu: {menu_text}")
+                            return menu_text, []
+        return None, []
+    except Exception as e:
+        print(f"Error extracting Clemens Kött menu: {e}")
+        return None, []
+
 def get_restaurant_info(restaurant_name, url):
     """
     Use AI to extract lunch information from a restaurant's website
@@ -198,7 +338,9 @@ def get_restaurant_info(restaurant_name, url):
         known_prices = {
             "Bullen": "145 kr",
             "Saltimporten": "135 kr",
-            "Friis 14": "159 kr"  # Add Friis 14's known price
+            "Friis 14": "159 kr",
+            "Välfärden": "115 kr",
+            "Clemens Kött": "135 kr"
         }
         
         if restaurant_name in known_prices:
@@ -248,6 +390,24 @@ def get_restaurant_info(restaurant_name, url):
             cleaned_content = f"{current_day}\n{daily_special}"  # Override cleaned content with just the relevant menu
             print(f"Found Friis 14 menu for {current_day}: {daily_special}")
             print(f"Found Friis 14 included items: {included_items}")
+    elif restaurant_name == "Välfärden":
+        daily_special, included_items = get_valfarden_menu(soup, current_day)
+        if daily_special:
+            cleaned_content = f"{current_day}\n{daily_special}"  # Override cleaned content with just the relevant menu
+            print(f"Found Välfärden menu for {current_day}: {daily_special}")
+            print(f"Found Välfärden included items: {included_items}")
+    elif restaurant_name == "Saltimporten":
+        daily_special, included_items = get_saltimporten_menu(soup, current_day)
+        if daily_special:
+            cleaned_content = f"{current_day}\n{daily_special}"  # Override cleaned content with just the relevant menu
+            print(f"Found Saltimporten menu for {current_day}: {daily_special}")
+            print(f"Found Saltimporten included items: {included_items}")
+    elif restaurant_name == "Clemens Kött":
+        daily_special, included_items = get_clemens_menu(soup, current_day)
+        if daily_special:
+            cleaned_content = f"{current_day}\n{daily_special}"  # Override cleaned content with just the relevant menu
+            print(f"Found Clemens Kött menu for {current_day}: {daily_special}")
+            print(f"Found Clemens Kött included items: {included_items}")
 
     # Prepare the daily_special value
     daily_special_value = daily_special if daily_special else f"description of today's lunch (or array of options if multiple) - MUST be for {current_day}"
@@ -270,6 +430,26 @@ def get_restaurant_info(restaurant_name, url):
     # If we don't have custom handler data, try the API
     max_retries = 3
     retry_delay = 2  # seconds
+    
+    # Define the prompt for the OpenAI API
+    prompt = f"""Extract lunch menu information from this restaurant website content for {current_day}:
+
+{cleaned_content}
+
+Return a JSON object with this structure:
+{{
+    "restaurant_name": "{restaurant_name}",
+    "url": "{url}",
+    "daily_special": "description of today's lunch (or array of options if multiple)",
+    "price": "price in kr",
+    "included_items": ["item1", "item2"],
+    "lunch_hours": "11:30-14:00",
+    "special_notes": "",
+    "day_of_week": "{current_day}",
+    "date": "{formatted_date}"
+}}
+
+Return only the JSON object, no other text."""
     
     for attempt in range(max_retries):
         try:
@@ -384,6 +564,10 @@ def main():
         {
             "name": "Friis 14",
             "url": "https://www.friis14.com/lunch"
+        },
+        {
+            "name": "Clemens Kött",
+            "url": "https://www.clemenskott.se/"
         }
     ]
     

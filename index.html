@@ -51,6 +51,11 @@
             margin: 5px 0;
             font-weight: 500;
             font-size: 1.2em;
+            display: inline-block;
+            background-color: black;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
         }
         .restaurant-link {
             margin-top: 10px;
@@ -65,7 +70,7 @@
         }
         .last-updated {
             text-align: right;
-            font-size: 24px;
+            font-size: 32px;
             color: #666;
             font-weight: 500;
             margin-bottom: 20px;
@@ -115,21 +120,55 @@
                     if (Array.isArray(deal.daily_special)) {
                         formattedSpecial = deal.daily_special.map((item, index) => {
                             if (index === 1 && !item.toLowerCase().includes('vegetarisk')) {
-                                return `Vegetarisk: ${item}`;
+                                return `<br><br>${item}`;
                             }
                             return item;
-                        }).join('<br>');
+                        }).join('');
                     } else {
                         // Check if it's Välfärden (contains multiple lines)
                         if (deal.restaurant_name === "Välfärden") {
-                            const parts = deal.daily_special.split('\n');
-                            if (parts.length > 1) {
-                                formattedSpecial = `${parts[0]}<br>Vegetarisk: ${parts[1]}`;
+                            if (deal.daily_special.includes('/')) {
+                                const parts = deal.daily_special.split('/');
+                                const cleanItem = parts[0].trim();
+                                const cleanPart = parts[1].trim();
+                                formattedSpecial = `${cleanItem}<br><br>${cleanPart}`;
                             } else {
-                                formattedSpecial = deal.daily_special.replace(' | ', '<br>');
+                                const parts = deal.daily_special.split('\n');
+                                if (parts.length > 1) {
+                                    formattedSpecial = `${parts[0]}<br><br>${parts[1]}`;
+                                } else {
+                                    formattedSpecial = deal.daily_special;
+                                }
+                            }
+                        } else if (deal.restaurant_name === "Saltimporten") {
+                            if (deal.daily_special.includes('VEGETARISKT')) {
+                                const parts = deal.daily_special.split('VEGETARISKT');
+                                const cleanItem = parts[0].trim();
+                                const cleanPart = parts[1].trim();
+                                formattedSpecial = `${cleanItem}<br><br>${cleanPart}`;
+                            } else {
+                                formattedSpecial = deal.daily_special;
                             }
                         } else {
-                            formattedSpecial = deal.daily_special.replace(' | ', '<br>');
+                            // Format daily special with vegetarian options
+                            if (deal.daily_special.includes('|')) {
+                                const parts = deal.daily_special.split('|');
+                                const cleanItem = parts[0].trim();
+                                const cleanPart = parts[1].trim();
+                                formattedSpecial = `${cleanItem}<br><br>${cleanPart.replace(/^Vegetarisk:\s*/i, '')}`;
+                            } else if (deal.daily_special.includes('\n')) {
+                                const parts = deal.daily_special.split('\n');
+                                const cleanItem = parts[0].trim();
+                                const cleanPart = parts[1].trim();
+                                formattedSpecial = `${cleanItem}<br><br>${cleanPart.replace(/^Vegetarisk:\s*/i, '')}`;
+                            } else if (deal.daily_special.includes('/')) {
+                                const parts = deal.daily_special.split('/');
+                                const cleanItem = parts[0].trim();
+                                const cleanPart = parts[1].trim();
+                                formattedSpecial = `${cleanItem}<br><br>${cleanPart.replace(/^Vegetarisk:\s*/i, '')}`;
+                            } else {
+                                formattedSpecial = deal.daily_special;
+                            }
                         }
                     }
                     
@@ -140,7 +179,7 @@
                         <div class="daily-special">${formattedSpecial}</div>
                         <div class="price">${deal.price}</div>
                         <div class="restaurant-link">
-                            <a href="${deal.url}" target="_blank">Besök restaurangen</a>
+                            <a href="${deal.url}" target="_blank">Mer info</a>
                         </div>
                     `;
                     container.appendChild(div);
