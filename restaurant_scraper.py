@@ -14,10 +14,14 @@ load_dotenv()
 # Initialize OpenAI client with API key from environment variable
 client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
+print("Starting scraper...")
+print(f"OpenAI API Key present: {'Yes' if os.getenv('OPENAI_API_KEY') else 'No'}")
+
 def get_webpage_content(url):
     """
     Fetch webpage content with error handling and retries
     """
+    print(f"Fetching content from: {url}")
     max_retries = 3
     retry_delay = 2  # seconds
     
@@ -25,6 +29,7 @@ def get_webpage_content(url):
         try:
             response = requests.get(url, timeout=10)
             response.raise_for_status()
+            print(f"Successfully fetched content from {url}")
             return BeautifulSoup(response.text, 'html.parser'), response.text
         except requests.RequestException as e:
             if attempt == max_retries - 1:

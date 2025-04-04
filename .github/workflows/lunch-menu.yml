@@ -31,7 +31,10 @@ jobs:
     - name: Run lunch menu scraper
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-      run: python restaurant_scraper.py
+      run: |
+        python restaurant_scraper.py
+        echo "Checking lunch_data.json contents:"
+        cat lunch_data.json
     
     - name: Commit and push if changed
       run: |
