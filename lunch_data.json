@@ -2,7 +2,7 @@
   {
     "restaurant_name": "Bullen",
     "url": "https://www.bullen.nu/sv/lunch/",
-    "daily_special": "Rimmad oxbringa med pepparrotssås och ugnsbakade rotfrukter",
+    "daily_special": "Dansk ribbesteg med äppelmos, rödkål och skysås",
     "price": "145 kr",
     "included_items": [
       "Sallad",
@@ -10,29 +10,24 @@
     ],
     "lunch_hours": "lunch serving hours",
     "special_notes": "any special information or notes",
-    "day_of_week": "Torsdag",
-    "date": "Torsdag den 3e april 2025"
+    "day_of_week": "Fredag",
+    "date": "Fredag den 4e april 2025"
   },
   {
     "restaurant_name": "Saltimporten",
     "url": "https://www.saltimporten.com/",
-    "daily_special": [
-      "Oxtartar / Ramslök / Rabarber / Mandel"
-    ],
+    "daily_special": "Smörrebröd / Lax / Citron / Sesam",
     "price": "135 kr",
     "included_items": [],
     "lunch_hours": "11–14",
     "special_notes": "",
-    "day_of_week": "Torsdag",
-    "date": "Torsdag den 3e april 2025"
+    "day_of_week": "Fredag",
+    "date": "Fredag den 4e april 2025"
   },
   {
     "restaurant_name": "Välfärden",
     "url": "https://valfarden.nu/dagens-lunch/",
-    "daily_special": [
-      "Salsiccia, smörbönor i långkokt tomatsås, saffranrostad fänkål & örtgrönt",
-      "Hoisinsvamp, sesam, salladslök, krossad gurka, chili & len sötpotatis- & morotskräm"
-    ],
+    "daily_special": "Pulled porkburgare, rökig bbq-sås, kålslå, picklad lök & sesamrostad potatis - Getostbakade betor & rötter, rostad hasselnöt i brynt smör samt potatismos med färska örter & rostad vitlök",
     "price": "115 kr",
     "included_items": [
       "vatten",
@@ -43,14 +38,14 @@
       "kaffe / te"
     ],
     "lunch_hours": "11:30 – 14:00",
-    "special_notes": "Alternativ kan finnas för intolerans, fråga i kassan. För vegetarisk alternativ, se meny",
-    "day_of_week": "Torsdag",
-    "date": "Torsdag den 3e april 2025"
+    "special_notes": "Intolerant? Fråga i kassan för alternativa alternativ.",
+    "day_of_week": "Fredag",
+    "date": "Fredag den 4e april 2025"
   },
   {
     "restaurant_name": "Friis 14",
     "url": "https://www.friis14.com/lunch",
-    "daily_special": "Grekiska färsbiffar med tzatziki, fetaost & rostad potatis | Vegetarisk: Toskansk gryta med halloumi, kikärtor & basilika. Serveras med gnocchi",
+    "daily_special": "Ölbräserad griskind med fänkål, persiljerot samt krämigt potatismos med gräslök | Vegetarisk: Toskansk gryta med halloumi, kikärtor & basilika. Serveras med gnocchi",
     "price": "159 kr",
     "included_items": [
       "Salladsbuffet",
@@ -59,7 +54,7 @@
     ],
     "lunch_hours": "lunch serving hours",
     "special_notes": "any special information or notes",
-    "day_of_week": "Torsdag",
-    "date": "Torsdag den 3e april 2025"
+    "day_of_week": "Fredag",
+    "date": "Fredag den 4e april 2025"
   }
 ]

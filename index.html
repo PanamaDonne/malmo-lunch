@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dagens: Malmö</title>
+    <title>Dagens rätt - Malmö</title>
     <link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         body {
@@ -14,10 +14,12 @@
             margin: 0 auto;
             padding: 20px;
             color: black;
+            font-size: 20px;
         }
         h1 {
             font-weight: 600;
             letter-spacing: 1px;
+            font-size: 2.5em;
         }
         .restaurant {
             margin-bottom: 30px;
@@ -28,7 +30,8 @@
             border-bottom: none;
         }
         .restaurant-name {
-            font-size: 1.2em;
+            font-size: 1.6em;
+            margin-top: 40px;
             margin-bottom: 5px;
             font-weight: 500;
         }
@@ -42,27 +45,34 @@
         .daily-special {
             margin: 5px 0;
             font-weight: 400;
+            font-size: 1.2em;
         }
         .price {
             margin: 5px 0;
             font-weight: 500;
+            font-size: 1.2em;
         }
-        .included {
+        .restaurant-link {
+            margin-top: 10px;
             font-size: 0.9em;
+        }
+        .restaurant-link a {
             color: #666;
-            font-weight: 400;
+            text-decoration: none;
+        }
+        .restaurant-link a:hover {
+            text-decoration: underline;
         }
         .last-updated {
             text-align: right;
             font-size: 0.8em;
             color: #666;
-            margin-bottom: 50px;
             font-weight: 400;
         }
     </style>
 </head>
 <body>
-    <h1>Dagens: Malmö</h1>
+    <h1>Dagens rätt - Malmö</h1>
     <div id="last-updated"></div>
     <div id="deals-container"></div>
 
@@ -95,10 +105,16 @@
                         <div class="restaurant-name">
                             <a href="${deal.url}" target="_blank">${deal.restaurant_name}</a>
                         </div>
-                        <div class="daily-special">${deal.daily_special}</div>
+                        <div class="daily-special">${Array.isArray(deal.daily_special) ? 
+                            deal.daily_special.map((item, index) => 
+                                index === 1 && !item.toLowerCase().includes('vegetarisk') ? 
+                                `Vegetarisk: ${item}` : item
+                            ).join('<br>') : 
+                            deal.daily_special.replace(' | ', '<br>')}</div>
                         <div class="price">${deal.price}</div>
-                        ${deal.included_items.length > 0 ? 
-                            `<div class="included">Inkluderar: ${deal.included_items.join(', ')}</div>` : ''}
+                        <div class="restaurant-link">
+                            <a href="${deal.url}" target="_blank">Besök restaurangen</a>
+                        </div>
                     `;
                     container.appendChild(div);
                 });
