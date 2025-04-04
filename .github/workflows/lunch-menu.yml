@@ -6,6 +6,11 @@ on:
     - cron: '0 7 * * *'  # 7:00 UTC = 8:00 AM Swedish time (UTC+1)
   workflow_dispatch:  # Allow manual trigger
 
+# Add permissions
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   update-lunch-menu:
     runs-on: ubuntu-latest
