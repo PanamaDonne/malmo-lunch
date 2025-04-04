@@ -2,16 +2,17 @@
   {
     "restaurant_name": "Bullen",
     "url": "https://www.bullen.nu/sv/lunch/",
-    "daily_special": "Dansk ribbesteg med äppelmos, rödkål och skysås",
+    "daily_special": "Pocherad spättfilé med champinjoner och hummersås",
     "price": "145 kr",
     "included_items": [
       "Sallad",
-      "måltidsdryck"
+      "måltidsdryck",
+      "köp till kaffe eller te för 19kr"
     ],
     "lunch_hours": "11:30-14:00",
     "special_notes": "",
-    "day_of_week": "Fredag",
-    "date": "Fredag den 4e april 2025"
+    "day_of_week": "Fredagen",
+    "date": "Fredagen den 4:e april 2025"
   },
   {
     "restaurant_name": "Saltimporten",
@@ -19,15 +20,15 @@
     "daily_special": "Smörrebröd / Lax / Citron / Sesam",
     "price": "",
     "included_items": [],
-    "lunch_hours": "11:00-14:00",
+    "lunch_hours": "11:30-14:00",
     "special_notes": "",
-    "day_of_week": "Fredag",
-    "date": "4 April 2025"
+    "day_of_week": "Fredagen",
+    "date": "Fredagen den 4:e april 2025"
   },
   {
     "restaurant_name": "Välfärden",
     "url": "https://valfarden.nu/dagens-lunch/",
-    "daily_special": "Pulled porkburgare, rökig bbq-sås, kålslå, picklad lök & sesamrostad potatis – Getostbakade betor & rötter, rostad hasselnöt i brynt smör samt potatismos med färska örter & rostad vitlök",
+    "daily_special": "Kalvfärsbiff, gräddsås, lingon, gurka & örtrostad potatis—Potatisgnocchi i brynt salviasmör, långbakad tomat, mandel & blomkål/parmesankräm",
     "price": "115 kr",
     "included_items": [
       "vatten",
@@ -39,13 +40,13 @@
     ],
     "lunch_hours": "11:30-14:00",
     "special_notes": "",
-    "day_of_week": "Fredag",
-    "date": "Fredag den 4e april 2025"
+    "day_of_week": "Fredagen",
+    "date": "Fredagen den 4:e april 2025"
   },
   {
     "restaurant_name": "Friis 14",
     "url": "https://www.friis14.com/lunch",
-    "daily_special": "Ölbräserad griskind med fänkål, persiljerot samt krämigt potatismos med gräslök | Vegetarisk: Toskansk gryta med halloumi, kikärtor & basilika. Serveras med gnocchi",
+    "daily_special": "Vegetarisk: Toskansk gryta med halloumi, kikärtor & basilika. Serveras med gnocchi",
     "price": "159 kr",
     "included_items": [
       "Salladsbuffet",
@@ -54,23 +55,7 @@
     ],
     "lunch_hours": "11:30-14:00",
     "special_notes": "",
-    "day_of_week": "Fredag",
-    "date": "Fredag den 4e april 2025"
-  },
-  {
-    "restaurant_name": "Clemens Kött",
-    "url": "https://www.clemenskott.se/",
-    "daily_special": "Tupp serveras med rotfruktspuré, rosépeppar sås, babyspenat och spetskålssallad",
-    "price": "135kr",
-    "included_items": [
-      "rotfruktspuré",
-      "rosépeppar sås",
-      "babyspenat",
-      "spetskålssallad"
-    ],
-    "lunch_hours": "11:30-14:00",
-    "special_notes": "",
-    "day_of_week": "Fredag",
-    "date": "Fredag den 4e april 2025"
+    "day_of_week": "Fredagen",
+    "date": "Fredagen den 4:e april 2025"
   }
 ]
