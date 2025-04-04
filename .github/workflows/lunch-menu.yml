@@ -28,6 +28,14 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     
+    - name: Verify OpenAI API Key
+      run: |
+        if [ -z "${{ secrets.OPENAI_API_KEY }}" ]; then
+          echo "Error: OPENAI_API_KEY is not set"
+          exit 1
+        fi
+        echo "OpenAI API Key is set (length: ${#OPENAI_API_KEY})"
+    
     - name: Run lunch menu scraper
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}

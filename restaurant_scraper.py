@@ -375,16 +375,39 @@ def get_restaurant_info(restaurant_name, url):
         print(f"Error getting restaurant info for {restaurant_name}: {e}")
         return None
 
-def save_lunch_data(data, filename="lunch_data.json"):
+def save_to_json(data):
     """
-    Save the lunch data to a JSON file
+    Save data to JSON file with error handling
     """
     try:
-        with open(filename, 'w', encoding='utf-8') as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
-        print(f"Data saved to {filename}")
+        # First try to read existing data
+        existing_data = []
+        if os.path.exists('lunch_data.json'):
+            with open('lunch_data.json', 'r', encoding='utf-8') as f:
+                existing_data = json.load(f)
+        
+        # Only save if we have new data
+        if data:
+            with open('lunch_data.json', 'w', encoding='utf-8') as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+            print("Data saved to lunch_data.json")
+        else:
+            print("No new data to save, keeping existing data")
+            # Restore existing data if we have no new data
+            with open('lunch_data.json', 'w', encoding='utf-8') as f:
+                json.dump(existing_data, f, ensure_ascii=False, indent=2)
     except Exception as e:
-        print(f"Error saving data: {e}")
+        print(f"Error saving to JSON: {e}")
+        # If we have existing data, restore it
+        if existing_data:
+            with open('lunch_data.json', 'w', encoding='utf-8') as f:
+                json.dump(existing_data, f, ensure_ascii=False, indent=2)
+            print("Restored existing data due to error")
+        else:
+            # If no existing data, save empty array
+            with open('lunch_data.json', 'w', encoding='utf-8') as f:
+                json.dump([], f, ensure_ascii=False, indent=2)
+            print("Created empty JSON file due to error")
 
 def main():
     # List of restaurants to check
@@ -417,7 +440,7 @@ def main():
             all_lunch_data.append(json.loads(restaurant_data))
     
     # Save all lunch data to a JSON file
-    save_lunch_data(all_lunch_data)
+    save_to_json(all_lunch_data)
     print("Lunch menu update completed!")
 
 if __name__ == "__main__":
