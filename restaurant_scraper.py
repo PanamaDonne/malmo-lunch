@@ -312,6 +312,7 @@ def get_restaurant_info(restaurant_name, url):
 
     try:
         # Create the chat completion with a shorter context window
+        print(f"Attempting OpenAI API call for {restaurant_name}...")
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
@@ -372,7 +373,12 @@ def get_restaurant_info(restaurant_name, url):
         return json.dumps(data)
         
     except Exception as e:
-        print(f"Error getting restaurant info for {restaurant_name}: {e}")
+        print(f"Detailed error getting restaurant info for {restaurant_name}:")
+        print(f"Error type: {type(e).__name__}")
+        print(f"Error message: {str(e)}")
+        if hasattr(e, 'response'):
+            print(f"Response status: {e.response.status_code}")
+            print(f"Response body: {e.response.text}")
         return None
 
 def save_to_json(data):
