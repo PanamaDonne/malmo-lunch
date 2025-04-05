@@ -2,60 +2,45 @@
   {
     "restaurant_name": "Bullen",
     "url": "https://www.bullen.nu/sv/lunch/",
-    "daily_special": "Pocherad spättfilé med champinjoner och hummersås",
-    "price": "145 kr",
-    "included_items": [
-      "Sallad",
-      "måltidsdryck",
-      "köp till kaffe eller te för 19kr"
-    ],
-    "lunch_hours": "11:30-14:00",
+    "daily_special": "Lunch serveras ej på Lördagen",
+    "price": "0 kr",
+    "included_items": [],
+    "lunch_hours": "Ej servering",
     "special_notes": "",
-    "day_of_week": "Fredagen",
-    "date": "Fredagen den 4:e april 2025"
+    "day_of_week": "Lördagen",
+    "date": "Lördagen den 5:e april 2025"
   },
   {
     "restaurant_name": "Saltimporten",
     "url": "https://www.saltimporten.com/",
-    "daily_special": "Smörrebröd / Lax / Citron / Sesam",
-    "price": "",
+    "daily_special": "Lunch serveras ej på Lördagen",
+    "price": "0 kr",
     "included_items": [],
-    "lunch_hours": "11:30-14:00",
+    "lunch_hours": "Ej servering",
     "special_notes": "",
-    "day_of_week": "Fredagen",
-    "date": "Fredagen den 4:e april 2025"
+    "day_of_week": "Lördagen",
+    "date": "Lördagen den 5:e april 2025"
   },
   {
     "restaurant_name": "Välfärden",
     "url": "https://valfarden.nu/dagens-lunch/",
-    "daily_special": "Kalvfärsbiff, gräddsås, lingon, gurka & örtrostad potatis—Potatisgnocchi i brynt salviasmör, långbakad tomat, mandel & blomkål/parmesankräm",
-    "price": "115 kr",
-    "included_items": [
-      "vatten",
-      "salladsbuffé",
-      "bröd",
-      "smör",
-      "hummus",
-      "kaffe / te"
-    ],
-    "lunch_hours": "11:30-14:00",
+    "daily_special": "Lunch serveras ej på Lördagen",
+    "price": "0 kr",
+    "included_items": [],
+    "lunch_hours": "Ej servering",
     "special_notes": "",
-    "day_of_week": "Fredagen",
-    "date": "Fredagen den 4:e april 2025"
+    "day_of_week": "Lördagen",
+    "date": "Lördagen den 5:e april 2025"
   },
   {
     "restaurant_name": "Friis 14",
     "url": "https://www.friis14.com/lunch",
-    "daily_special": "Vegetarisk: Toskansk gryta med halloumi, kikärtor & basilika. Serveras med gnocchi",
-    "price": "159 kr",
-    "included_items": [
-      "Salladsbuffet",
-      "surdegsbröd",
-      "kaffe"
-    ],
-    "lunch_hours": "11:30-14:00",
+    "daily_special": "Lunch serveras ej på Lördagen",
+    "price": "0 kr",
+    "included_items": [],
+    "lunch_hours": "Ej servering",
     "special_notes": "",
-    "day_of_week": "Fredagen",
-    "date": "Fredagen den 4:e april 2025"
+    "day_of_week": "Lördagen",
+    "date": "Lördagen den 5:e april 2025"
   }
 ]

@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dagens rätt - Malmö</title>
+    <title>Dagens rätt - Malmö | Dagliga lunchmenyer i Malmö</title>
+    <meta name="description" content="Uppdaterade dagliga lunchmenyer från Malmös bästa restauranger. Inkluderar Bullen, Saltimporten, Välfärden och Friis 14. Priser och öppettider inkluderade.">
+    <meta name="keywords" content="lunch malmö, dagens rätt malmö, lunchmeny malmö, restauranger malmö, bullen malmö, saltimporten malmö, välfärden malmö, friis 14 malmö">
     <link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         body {
@@ -78,9 +80,28 @@
     </style>
 </head>
 <body>
-    <h1 id="page-title">Dagens rätt - Malmö</h1>
-    <div id="last-updated"></div>
-    <div id="deals-container"></div>
+    <header>
+        <h1 id="page-title">Dagens rätt - Malmö</h1>
+        <div id="last-updated"></div>
+    </header>
+    <main>
+        <div id="deals-container"></div>
+    </main>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Dagens rätt - Malmö",
+        "description": "Uppdaterade dagliga lunchmenyer från Malmös bästa restauranger",
+        "url": "https://dagensrattmalmo.se",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://dagensrattmalmo.se/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
 
     <script>
         function formatDate(dateString) {
@@ -108,6 +129,46 @@
                 const response = await fetch('lunch_data.json');
                 const deals = await response.json();
                 
+                // Add restaurant schema markup
+                const restaurantSchema = {
+                    "@context": "https://schema.org",
+                    "@type": "ItemList",
+                    "itemListElement": deals.map((deal, index) => ({
+                        "@type": "ListItem",
+                        "position": index + 1,
+                        "item": {
+                            "@type": "Restaurant",
+                            "name": deal.restaurant_name,
+                            "url": deal.url,
+                            "servesCuisine": "Swedish",
+                            "priceRange": deal.price,
+                            "menu": {
+                                "@type": "Menu",
+                                "hasMenuSection": {
+                                    "@type": "MenuSection",
+                                    "name": "Dagens Lunch",
+                                    "hasMenuItem": {
+                                        "@type": "MenuItem",
+                                        "name": deal.daily_special,
+                                        "description": deal.daily_special,
+                                        "offers": {
+                                            "@type": "Offer",
+                                            "price": deal.price.replace(" kr", ""),
+                                            "priceCurrency": "SEK"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }))
+                };
+
+                // Add schema markup to page
+                const schemaScript = document.createElement('script');
+                schemaScript.type = 'application/ld+json';
+                schemaScript.text = JSON.stringify(restaurantSchema);
+                document.head.appendChild(schemaScript);
+
                 const container = document.getElementById('deals-container');
                 container.innerHTML = ''; // Clear existing deals
                 

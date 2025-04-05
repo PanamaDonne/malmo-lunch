@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Allow: /lunch_data.json
+Allow: /sitemap.xml
+Disallow: /.env
+Disallow: /.git/
+Disallow: /.github/ 

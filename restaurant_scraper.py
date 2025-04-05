@@ -176,25 +176,15 @@ def get_valfarden_menu(soup, current_day):
         for i, line in enumerate(lines):
             if current_day in line:
                 print(f"Found {current_day} at line {i}")
-                # The menu item should be the next line
-                if i + 1 < len(lines):
-                    menu_text = lines[i + 1]
-                    # Skip if the line contains contact info or other non-menu text
-                    if not any(x in menu_text.lower() for x in ['tel:', 'email:', 'kontakt', 'intolerant']):
-                        # Split at "—" to separate regular and vegetarian options
-                        parts = menu_text.split('—', 1)
-                        if len(parts) == 2:
-                            regular_menu = parts[0].strip()
-                            vegetarian_menu = parts[1].strip()
-                            print(f"Found regular menu: {regular_menu}")
-                            print(f"Found vegetarian menu: {vegetarian_menu}")
-                            included_items = ["vatten", "salladsbuffé", "bröd", "smör", "hummus", "kaffe / te"]
-                            return f"{regular_menu}\n\nVegetarisk: {vegetarian_menu}", included_items
-                        else:
-                            # If no "—" found, just return the whole line as regular menu
-                            print(f"Found menu: {menu_text}")
-                            included_items = ["vatten", "salladsbuffé", "bröd", "smör", "hummus", "kaffe / te"]
-                            return menu_text, included_items
+                # The menu items should be in the next two lines
+                if i + 2 < len(lines):
+                    menu1 = lines[i + 1]
+                    menu2 = lines[i + 2]
+                    # Skip if the lines contain contact info or other non-menu text
+                    if not any(x in menu1.lower() for x in ['tel:', 'email:', 'kontakt', 'intolerant']):
+                        print(f"Found menus: {menu1} | {menu2}")
+                        included_items = ["vatten", "salladsbuffé", "bröd", "smör", "hummus", "kaffe / te"]
+                        return f"{menu1}\n\n{menu2}", included_items
         return None, []
     except Exception as e:
         print(f"Error extracting Välfärden menu: {e}")
@@ -292,15 +282,6 @@ def get_restaurant_info(restaurant_name, url):
     """
     Use AI to extract lunch information from a restaurant's website
     """
-    # First get the webpage content
-    soup, webpage_content = get_webpage_content(url)
-    if not webpage_content:
-        print(f"Could not fetch content from {url}")
-        return None
-
-    # Clean and reduce webpage content
-    cleaned_content = clean_webpage_content(soup)
-    
     # Get current weekday (0 = Monday, 6 = Sunday)
     current_weekday = datetime.now().weekday()
     weekday_names = ['Måndagen', 'Tisdagen', 'Onsdagen', 'Torsdagen', 'Fredagen', 'Lördagen', 'Söndagen']
@@ -322,6 +303,30 @@ def get_restaurant_info(restaurant_name, url):
     
     formatted_date = f"{current_day} den {day}:e {month} {year}"
 
+    # If it's a weekend, return "Lunch serveras ej" message
+    if current_weekday > 4:  # Saturday (5) or Sunday (6)
+        data = {
+            "restaurant_name": restaurant_name,
+            "url": url,
+            "daily_special": f"Lunch serveras ej på {current_day}",
+            "price": "0 kr",
+            "included_items": [],
+            "lunch_hours": "Ej servering",
+            "special_notes": "",
+            "day_of_week": current_day,
+            "date": formatted_date
+        }
+        return json.dumps(data)
+
+    # First get the webpage content
+    soup, webpage_content = get_webpage_content(url)
+    if not webpage_content:
+        print(f"Could not fetch content from {url}")
+        return None
+
+    # Clean and reduce webpage content
+    cleaned_content = clean_webpage_content(soup)
+    
     # Try to extract price using BeautifulSoup
     price = None
     try:
