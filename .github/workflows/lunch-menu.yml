@@ -32,7 +32,9 @@ jobs:
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
+        echo "Starting scraper at $(date)"
         python restaurant_scraper.py
+        echo "Finished scraper at $(date)"
         echo "Checking lunch_data.json contents:"
         cat lunch_data.json
     
@@ -42,4 +44,10 @@ jobs:
         git config --local user.name "GitHub Action"
         git add lunch_data.json
         git status
-        git diff --quiet && git diff --staged --quiet || (git commit -m "Update lunch menu data" && git push) 
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Update lunch menu data" && git push)
+    
+    - name: Debug Info
+      run: |
+        echo "Current time: $(date)"
+        echo "GitHub Actions timezone: $TZ"
+        echo "Repository timezone: $(date +%Z)" 
