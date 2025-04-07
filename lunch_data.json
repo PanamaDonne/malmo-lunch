@@ -2,21 +2,25 @@
   {
     "restaurant_name": "Bullen",
     "url": "https://www.bullen.nu/sv/lunch/",
-    "daily_special": "Stekt falukorv med senap och stuvad blomkål",
+    "daily_special": [
+      "Stekt falukorv med senap och stuvad blomkål"
+    ],
     "price": "145 kr",
     "included_items": [
-      "sallad",
-      "måltidsdryck"
+      "Sallad",
+      "Måltidsdryck"
     ],
     "lunch_hours": "11:30-14:00",
     "special_notes": "Köp till kaffe eller te för 19kr",
     "day_of_week": "Måndagen",
-    "date": "Måndagen 7:e april"
+    "date": "Måndagen den 7:e april 2025"
   },
   {
     "restaurant_name": "Saltimporten",
     "url": "https://www.saltimporten.com/",
-    "daily_special": "Fläsksida / Lingon / Äpple / Potatis",
+    "daily_special": [
+      "Fläsksida / Lingon / Äpple / Potatis"
+    ],
     "price": "135 kr",
     "included_items": [
       "Fläsksida",
@@ -24,23 +28,17 @@
       "Äpple",
       "Potatis"
     ],
-    "lunch_hours": "11:00-14:00",
+    "lunch_hours": "11:00–14:00",
     "special_notes": "",
     "day_of_week": "Måndagen",
-    "date": "Måndagen den 7:e april"
+    "date": "Måndagen den 7:e april 2025"
   },
   {
-    "restaurant_name": "Välfärden - kök & kaffe",
+    "restaurant_name": "Välfärden",
     "url": "https://valfarden.nu/dagens-lunch/",
     "daily_special": [
-      {
-        "name": "Ostgratinerad burrito med fläsk & nöt",
-        "description": "Ostgratinerad burrito med fläsk & nöt, rökiga bönor, avokadokräm, koriandergrönt, chips & picklat"
-      },
-      {
-        "name": "Kryddig Indisk spenatcurry med tofu",
-        "description": "Kryddig Indisk spenatcurry med tofu, chutney, raita med gurka & mynta samt ris"
-      }
+      "Ostgratinerad burrito med fläsk & nöt, rökiga bönor, avokadokräm, koriandergrönt, chips & picklat",
+      "Kryddig Indisk spenatcurry med tofu, chutney, raita med gurka & mynta samt ris"
     ],
     "price": "115 kr",
     "included_items": [
@@ -48,8 +46,7 @@
       "salladsbuffé",
       "bröd",
       "smör",
-      "hummus",
-      "kaffe / te"
+      "hummus & kaffe / te"
     ],
     "lunch_hours": "11:30-14:00",
     "special_notes": "",
@@ -59,7 +56,11 @@
   {
     "restaurant_name": "Friis 14",
     "url": "https://www.friis14.com/lunch",
-    "daily_special": "Vegetarisk: Toskansk gryta med halloumi, kikärtor & basilika. Serveras med gnocchi",
+    "daily_special": [
+      "Salladsbuffet",
+      "surdegsbröd",
+      "kaffe"
+    ],
     "price": "159 kr",
     "included_items": [
       "Salladsbuffet",

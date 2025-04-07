@@ -159,60 +159,51 @@ def get_friis_menu(soup, current_day):
 
 def get_valfarden_menu(soup, current_day):
     """
-    Extract specific menu information from Välfärden's website
+    Extract menu for Välfärden
     """
     try:
         # Get all text content
-        text = soup.get_text()
+        text_content = soup.get_text()
+        lines = [line.strip() for line in text_content.split('\n') if line.strip()]
+        print(f"Available lines for Välfärden: {lines}")
         
-        # Split into lines and clean
-        lines = [line.strip() for line in text.split('\n') if line.strip()]
-        
-        # Debug print
-        print(f"Looking for {current_day}'s menu in Välfärden")
-        print("Available lines:", lines)
-        
-        # Look for the current day's menu
+        # Find the current day's menu
+        menu_items = []
         for i, line in enumerate(lines):
             if current_day in line:
-                print(f"Found {current_day} at line {i}")
-                # The menu items should be in the next lines
+                print(f"Found {current_day} at line {i}: {line}")
+                # Get the next line as the first menu item
                 if i + 1 < len(lines):
-                    menu_text = lines[i + 1]
-                    # Skip if the line contains contact info or other non-menu text
-                    if not any(x in menu_text.lower() for x in ['tel:', 'email:', 'kontakt', 'intolerant']):
-                        # Try different separators
-                        if '—' in menu_text:
-                            # Split by em dash
-                            parts = menu_text.split('—', 1)
-                            menu1 = parts[0].strip()
-                            menu2 = parts[1].strip()
-                        elif '-' in menu_text:
-                            # Split by regular dash
-                            parts = menu_text.split('-', 1)
-                            menu1 = parts[0].strip()
-                            menu2 = parts[1].strip()
-                        elif '\n' in menu_text:
-                            # Split by newline
-                            parts = menu_text.split('\n', 1)
-                            menu1 = parts[0].strip()
-                            menu2 = parts[1].strip()
-                        else:
-                            # If no separator found, try to get the next line
-                            if i + 2 < len(lines):
-                                menu1 = menu_text
-                                menu2 = lines[i + 2].strip()
-                            else:
-                                menu1 = menu_text
-                                menu2 = ""
-                        
-                        print(f"Found menus: {menu1} | {menu2}")
-                        included_items = ["vatten", "salladsbuffé", "bröd", "smör", "hummus", "kaffe / te"]
-                        return f"{menu1}\n\n{menu2}", included_items
-        return None, []
+                    first_item = lines[i + 1].strip()
+                    # Skip lines with contact info or other non-menu text
+                    if any(skip in first_item.lower() for skip in ['tel:', 'tel.', 'telefon:', 'telefon.', 'email:', 'email.', 'e-post:', 'e-post.', 'adress:', 'adress.', 'öppettider:', 'öppettider.', 'lunch:', 'lunch.', 'pris:', 'pris.', 'kr', ':-']):
+                        continue
+                    
+                    # Add the first menu item
+                    menu_items.append(first_item)
+                    
+                    # Look for the em dash line and the second menu item
+                    if i + 2 < len(lines) and "—" in lines[i + 2]:
+                        if i + 3 < len(lines):
+                            second_item = lines[i + 3].strip()
+                            if second_item and not any(skip in second_item.lower() for skip in ['tel:', 'tel.', 'telefon:', 'telefon.', 'email:', 'email.', 'e-post:', 'e-post.', 'adress:', 'adress.', 'öppettider:', 'öppettider.', 'lunch:', 'lunch.', 'pris:', 'pris.', 'kr', ':-']):
+                                menu_items.append(second_item)
+                    
+                    print(f"Found menu items: {menu_items}")
+                    break
+        
+        if menu_items:
+            # Join the menu items with " / " for display
+            daily_special = " / ".join(menu_items)
+            # Return the array of menu items for included_items
+            return daily_special, menu_items
+        else:
+            print(f"No menu found for {current_day}")
+            return None, None
+            
     except Exception as e:
-        print(f"Error extracting Välfärden menu: {e}")
-        return None, []
+        print(f"Error in get_valfarden_menu: {e}")
+        return None, None
 
 def get_saltimporten_menu(soup, current_day):
     """
@@ -428,9 +419,9 @@ def get_restaurant_info(restaurant_name, url):
         data = {
             "restaurant_name": restaurant_name,
             "url": url,
-            "daily_special": daily_special_value,
+            "daily_special": included_items if isinstance(included_items, list) else [daily_special],
             "price": known_prices.get(restaurant_name, "159 kr"),  # Use known price or default to Friis 14 price
-            "included_items": included_items,
+            "included_items": included_items if isinstance(included_items, list) else [daily_special],
             "lunch_hours": "11:30-14:00",
             "special_notes": "",
             "day_of_week": current_day,
@@ -451,7 +442,7 @@ Return a JSON object with this structure:
 {{
     "restaurant_name": "{restaurant_name}",
     "url": "{url}",
-    "daily_special": "description of today's lunch (or array of options if multiple)",
+    "daily_special": ["description of today's lunch", "second option if available"],
     "price": "price in kr",
     "included_items": ["item1", "item2"],
     "lunch_hours": "11:30-14:00",
