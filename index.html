@@ -83,12 +83,14 @@
     <header>
         <h1 id="page-title">DAGENS RÄTTER - MALMÖ</h1>
         <h2 id="last-updated"></h2>
-        <div style="display: flex; align-items: center; margin-bottom: 20px; border: 2px solid black; padding: 10px; border-radius: 8px; max-width: fit-content;">
-            <a href="https://buymeacoffee.com/createdbydt" target="_blank" class="coffee-button">
-                <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Köp mig en kaffe">
-            </a>
-            <span style="margin-left: 10px; font-size: 1.2em;">Ah du, köp en kaffe ti maj</span>
-        </div>
+        <a href="https://buymeacoffee.com/createdbydt" target="_blank" style="text-decoration: none; color: inherit;">
+            <div style="display: flex; align-items: center; margin-bottom: 20px; border: 2px solid black; padding: 10px; border-radius: 8px; max-width: fit-content; cursor: pointer;">
+                <div class="coffee-button">
+                    <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Köp mig en kaffe">
+                </div>
+                <span style="margin-left: 10px; font-size: 1.2em;">Ah du, köp en kaffe ti maj</span>
+            </div>
+        </a>
     </header>
     <main>
         <div id="deals-container"></div>
@@ -98,12 +100,12 @@
     {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "name": "Dagens rätt - Malmö",
+        "name": "DAGENS RÄTTER - MALMÖ",
         "description": "Uppdaterade dagliga lunchmenyer från Malmös bästa restauranger",
-        "url": "https://dagensrattmalmo.se",
+        "url": "https://dagensrattermalmo.se",
         "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://dagensrattmalmo.se/search?q={search_term_string}",
+            "target": "https://dagensrattermalmo.se/search?q={search_term_string}",
             "query-input": "required name=search_term_string"
         }
     }

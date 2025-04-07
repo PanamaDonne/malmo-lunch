@@ -8,12 +8,12 @@
     "price": "145 kr",
     "included_items": [
       "Sallad",
-      "Måltidsdryck"
+      "måltidsdryck"
     ],
     "lunch_hours": "11:30-14:00",
     "special_notes": "Köp till kaffe eller te för 19kr",
     "day_of_week": "Måndagen",
-    "date": "Måndagen den 7:e april 2025"
+    "date": "Måndagen den 7:e april"
   },
   {
     "restaurant_name": "Saltimporten",
@@ -28,13 +28,13 @@
       "Äpple",
       "Potatis"
     ],
-    "lunch_hours": "11:00–14:00",
+    "lunch_hours": "11:30-14:00",
     "special_notes": "",
     "day_of_week": "Måndagen",
     "date": "Måndagen den 7:e april 2025"
   },
   {
-    "restaurant_name": "Välfärden",
+    "restaurant_name": "Välfärden - kök & kaffe",
     "url": "https://valfarden.nu/dagens-lunch/",
     "daily_special": [
       "Ostgratinerad burrito med fläsk & nöt, rökiga bönor, avokadokräm, koriandergrönt, chips & picklat",
@@ -46,7 +46,8 @@
       "salladsbuffé",
       "bröd",
       "smör",
-      "hummus & kaffe / te"
+      "hummus",
+      "kaffe / te"
     ],
     "lunch_hours": "11:30-14:00",
     "special_notes": "",
