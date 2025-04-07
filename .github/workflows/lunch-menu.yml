@@ -3,7 +3,7 @@ name: Update Lunch Menu
 on:
   schedule:
     # Run at 8:00 AM Swedish time (UTC+1/UTC+2)
-    - cron: '0 7 * * 1-5'  # 7:00 UTC = 8:00 AM Swedish time (UTC+1)
+    - cron: '0 9 * * 1-5'  # 9:00 UTC = 10:00 AM Swedish time (UTC+1)
   workflow_dispatch:  # Allow manual trigger
 
 # Add permissions

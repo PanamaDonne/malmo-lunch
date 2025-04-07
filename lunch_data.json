@@ -5,19 +5,19 @@
     "daily_special": "Stekt falukorv med senap och stuvad blomkål",
     "price": "145 kr",
     "included_items": [
-      "Sallad",
+      "sallad",
       "måltidsdryck"
     ],
     "lunch_hours": "11:30-14:00",
     "special_notes": "Köp till kaffe eller te för 19kr",
     "day_of_week": "Måndagen",
-    "date": "Måndagen den 7:e april 2025"
+    "date": "Måndagen 7:e april"
   },
   {
     "restaurant_name": "Saltimporten",
     "url": "https://www.saltimporten.com/",
     "daily_special": "Fläsksida / Lingon / Äpple / Potatis",
-    "price": "",
+    "price": "135 kr",
     "included_items": [
       "Fläsksida",
       "Lingon",
@@ -27,12 +27,21 @@
     "lunch_hours": "11:00-14:00",
     "special_notes": "",
     "day_of_week": "Måndagen",
-    "date": "Måndagen den 7:e april 2025"
+    "date": "Måndagen den 7:e april"
   },
   {
-    "restaurant_name": "Välfärden",
+    "restaurant_name": "Välfärden - kök & kaffe",
     "url": "https://valfarden.nu/dagens-lunch/",
-    "daily_special": "Ostgratinerad burrito med fläsk & nöt, rökiga bönor, avokadokräm, koriandergrönt, chips & picklat",
+    "daily_special": [
+      {
+        "name": "Ostgratinerad burrito med fläsk & nöt",
+        "description": "Ostgratinerad burrito med fläsk & nöt, rökiga bönor, avokadokräm, koriandergrönt, chips & picklat"
+      },
+      {
+        "name": "Kryddig Indisk spenatcurry med tofu",
+        "description": "Kryddig Indisk spenatcurry med tofu, chutney, raita med gurka & mynta samt ris"
+      }
+    ],
     "price": "115 kr",
     "included_items": [
       "vatten",

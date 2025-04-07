@@ -176,12 +176,36 @@ def get_valfarden_menu(soup, current_day):
         for i, line in enumerate(lines):
             if current_day in line:
                 print(f"Found {current_day} at line {i}")
-                # The menu items should be in the next two lines
-                if i + 2 < len(lines):
-                    menu1 = lines[i + 1]
-                    menu2 = lines[i + 2]
-                    # Skip if the lines contain contact info or other non-menu text
-                    if not any(x in menu1.lower() for x in ['tel:', 'email:', 'kontakt', 'intolerant']):
+                # The menu items should be in the next lines
+                if i + 1 < len(lines):
+                    menu_text = lines[i + 1]
+                    # Skip if the line contains contact info or other non-menu text
+                    if not any(x in menu_text.lower() for x in ['tel:', 'email:', 'kontakt', 'intolerant']):
+                        # Try different separators
+                        if '—' in menu_text:
+                            # Split by em dash
+                            parts = menu_text.split('—', 1)
+                            menu1 = parts[0].strip()
+                            menu2 = parts[1].strip()
+                        elif '-' in menu_text:
+                            # Split by regular dash
+                            parts = menu_text.split('-', 1)
+                            menu1 = parts[0].strip()
+                            menu2 = parts[1].strip()
+                        elif '\n' in menu_text:
+                            # Split by newline
+                            parts = menu_text.split('\n', 1)
+                            menu1 = parts[0].strip()
+                            menu2 = parts[1].strip()
+                        else:
+                            # If no separator found, try to get the next line
+                            if i + 2 < len(lines):
+                                menu1 = menu_text
+                                menu2 = lines[i + 2].strip()
+                            else:
+                                menu1 = menu_text
+                                menu2 = ""
+                        
                         print(f"Found menus: {menu1} | {menu2}")
                         included_items = ["vatten", "salladsbuffé", "bröd", "smör", "hummus", "kaffe / te"]
                         return f"{menu1}\n\n{menu2}", included_items
@@ -327,20 +351,18 @@ def get_restaurant_info(restaurant_name, url):
     # Clean and reduce webpage content
     cleaned_content = clean_webpage_content(soup)
     
-    # Try to extract price using BeautifulSoup
-    price = None
-    try:
-        # Set known prices for specific restaurants
-        known_prices = {
-            "Bullen": "145 kr",
-            "Saltimporten": "135 kr",
-            "Friis 14": "159 kr",
-            "Välfärden": "115 kr"
-        }
-        
-        if restaurant_name in known_prices:
-            price = known_prices[restaurant_name]
-        else:
+    # Set known prices for specific restaurants
+    known_prices = {
+        "Bullen": "145 kr",
+        "Saltimporten": "135 kr",
+        "Friis 14": "159 kr",
+        "Välfärden": "115 kr"
+    }
+    
+    # Get the price from known prices or try to extract it
+    price = known_prices.get(restaurant_name)
+    if not price:
+        try:
             # Look for common price patterns in Swedish
             price_patterns = [
                 r'(\d+)\s*(?:kr|:-|SEK)',
@@ -367,8 +389,8 @@ def get_restaurant_info(restaurant_name, url):
                     else:
                         print(f"Found price {price_value} kr for {restaurant_name} but it's outside the reasonable range (99-180 kr)")
                     
-    except Exception as e:
-        print(f"Error extracting price: {e}")
+        except Exception as e:
+            print(f"Error extracting price: {e}")
 
     # Get specific menu for restaurants with custom handling
     daily_special = None
@@ -407,7 +429,7 @@ def get_restaurant_info(restaurant_name, url):
             "restaurant_name": restaurant_name,
             "url": url,
             "daily_special": daily_special_value,
-            "price": price if price else "159 kr",  # Default to known price for Friis 14
+            "price": known_prices.get(restaurant_name, "159 kr"),  # Use known price or default to Friis 14 price
             "included_items": included_items,
             "lunch_hours": "11:30-14:00",
             "special_notes": "",
@@ -458,6 +480,9 @@ Return only the JSON object, no other text."""
             try:
                 cleaned_response = response_text.replace('```json', '').replace('```', '').strip()
                 data = json.loads(cleaned_response)
+                # Ensure we use the known price if available
+                if restaurant_name in known_prices:
+                    data["price"] = known_prices[restaurant_name]
                 return json.dumps(data)
             except json.JSONDecodeError as e:
                 print(f"Error parsing JSON for {restaurant_name}: {e}")
@@ -467,7 +492,7 @@ Return only the JSON object, no other text."""
                     "restaurant_name": restaurant_name,
                     "url": url,
                     "daily_special": daily_special_value,
-                    "price": price if price else "159 kr",
+                    "price": known_prices.get(restaurant_name, "159 kr"),  # Use known price or default to Friis 14 price
                     "included_items": included_items if included_items else [],
                     "lunch_hours": "11:30-14:00",
                     "special_notes": "",
@@ -492,7 +517,7 @@ Return only the JSON object, no other text."""
                     "restaurant_name": restaurant_name,
                     "url": url,
                     "daily_special": daily_special_value,
-                    "price": price if price else "159 kr",
+                    "price": known_prices.get(restaurant_name, "159 kr"),  # Use known price or default to Friis 14 price
                     "included_items": included_items if included_items else [],
                     "lunch_hours": "11:30-14:00",
                     "special_notes": "",
