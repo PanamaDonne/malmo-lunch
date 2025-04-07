@@ -107,55 +107,53 @@ def get_bullen_menu(soup, current_day):
 
 def get_friis_menu(soup, current_day):
     """
-    Extract specific menu information from Friis 14's website, including vegetarian options and included items
+    Extract menu for Friis 14
     """
     try:
+        # Return "Stängt idag" for Mondays
+        if current_day == "Måndagen":
+            print("Friis 14 is closed on Mondays")
+            return "Stängt idag", None
+            
         # Get all text content
-        text = soup.get_text()
+        text_content = soup.get_text()
+        lines = [line.strip() for line in text_content.split('\n') if line.strip()]
+        print(f"Available lines for Friis 14: {lines}")
         
-        # Split into lines and clean
-        lines = [line.strip() for line in text.split('\n') if line.strip()]
-        
-        # Debug print
-        print(f"Looking for {current_day}'s menu in Friis 14")
-        print("Available lines:", lines)
-        
-        # Find the current day's menu and vegetarian option
-        regular_menu = None
-        vegetarian_menu = None
-        included_items = ["Salladsbuffet", "surdegsbröd", "kaffe"]  # Known included items for Friis 14
-        
-        # First find the regular menu
-        for i, line in enumerate(lines):
-            if current_day in line:
-                print(f"Found {current_day} at line {i}")
-                # The menu item should be the next line
-                if i + 1 < len(lines):
-                    regular_menu = lines[i + 1]
-                    print(f"Found regular menu: {regular_menu}")
-                    break
-        
-        # Then find the vegetarian menu
-        for i, line in enumerate(lines):
-            if "Veckans vegetariska" in line:
-                print(f"Found vegetarian section at line {i}")
-                # The vegetarian menu should be the next line
-                if i + 1 < len(lines):
-                    vegetarian_menu = lines[i + 1]
-                    print(f"Found vegetarian menu: {vegetarian_menu}")
-                    break
-        
-        # Combine the menus if we found both
-        if regular_menu and vegetarian_menu:
-            return f"{regular_menu} | Vegetarisk: {vegetarian_menu}", included_items
-        elif regular_menu:
-            return regular_menu, included_items
-        elif vegetarian_menu:
-            return f"Vegetarisk: {vegetarian_menu}", included_items
-        return None, included_items
+        # Check if they serve lunch on the current day
+        if current_day in ["Tisdagen", "Onsdagen", "Torsdagen", "Fredagen"]:
+            # Get the next line as the menu item
+            for i, line in enumerate(lines):
+                if current_day in line and not any(day in line for day in ["Måndagen", "Tisdagen", "Onsdagen", "Torsdagen", "Fredagen"] if day != current_day):
+                    print(f"Found {current_day} at line {i}: {line}")
+                    if i + 1 < len(lines):
+                        menu_text = lines[i + 1].strip()
+                        # Skip lines with contact info or other non-menu text
+                        if any(skip in menu_text.lower() for skip in ['tel:', 'tel.', 'telefon:', 'telefon.', 'email:', 'email.', 'e-post:', 'e-post.', 'adress:', 'adress.', 'öppettider:', 'öppettider.', 'lunch:', 'lunch.', 'pris:', 'pris.', 'kr', ':-']):
+                            continue
+                        
+                        # Split by different possible separators
+                        if "—" in menu_text:
+                            items = [item.strip() for item in menu_text.split("—")]
+                        elif "-" in menu_text:
+                            items = [item.strip() for item in menu_text.split("-")]
+                        elif "\n" in menu_text:
+                            items = [item.strip() for item in menu_text.split("\n")]
+                        else:
+                            items = [menu_text]
+                        
+                        # Add each item to the menu_items list
+                        menu_items = []
+                        menu_items.extend(items)
+                        print(f"Found menu items: {menu_items}")
+                        return " / ".join(menu_items), menu_items
+            
+        print(f"No menu found for {current_day}")
+        return None, None
+            
     except Exception as e:
-        print(f"Error extracting Friis 14 menu: {e}")
-        return None, []
+        print(f"Error in get_friis_menu: {e}")
+        return None, None
 
 def get_valfarden_menu(soup, current_day):
     """
@@ -394,7 +392,21 @@ def get_restaurant_info(restaurant_name, url):
             print(f"Found Bullen included items: {included_items}")
     elif restaurant_name == "Friis 14":
         daily_special, included_items = get_friis_menu(soup, current_day)
-        if daily_special:
+        if daily_special == "Stängt idag":
+            # Create a special data object for when Friis 14 is closed
+            data = {
+                "restaurant_name": restaurant_name,
+                "url": url,
+                "daily_special": ["Stängt idag"],
+                "price": known_prices.get(restaurant_name, "159 kr"),
+                "included_items": [],
+                "lunch_hours": "Ej servering",
+                "special_notes": "",
+                "day_of_week": current_day,
+                "date": formatted_date
+            }
+            return json.dumps(data)
+        elif daily_special:
             cleaned_content = f"{current_day}\n{daily_special}"  # Override cleaned content with just the relevant menu
             print(f"Found Friis 14 menu for {current_day}: {daily_special}")
             print(f"Found Friis 14 included items: {included_items}")

@@ -19,8 +19,7 @@
             font-size: 20px;
         }
         h1 {
-            font-weight: 600;
-            letter-spacing: 1px;
+            margin-bottom: 30px;
             font-size: 2.5em;
         }
         .restaurant {
@@ -88,12 +87,12 @@
                 <div class="coffee-button">
                     <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Köp mig en kaffe">
                 </div>
-                <span style="margin-left: 10px; font-size: 1.2em;">Ah du! Köp maj en kaffe!</span>
+                <span style="margin-left: 10px; font-size: 1.2em;">Fyll po!</span>
             </div>
         </a>
         <a href="mailto:createdbydaniel@gmail.com" style="text-decoration: none; color: inherit;">
             <div style="display: flex; align-items: center; margin-bottom: 20px; padding: 10px; border-radius: 8px; max-width: fit-content; cursor: pointer;">
-                <span style="font-size: 1.2em;">Artificiell intelligens å sånt gör så att det visas dagens rätter här. Men saknar du någon bra servering? Skriv ti maj!</span>
+                <span style="font-size: 1.2em;">Artificiell intelligens å sånt gör så att det visas dagens rätter här. Men saknar du någon servering så skriv ti oss.</span>
             </div>
         </a>
     </header>
@@ -195,7 +194,9 @@
                     
                     // Format daily special based on whether it's an array or string
                     let formattedSpecial;
-                    if (Array.isArray(deal.daily_special)) {
+                    if (!deal.daily_special) {
+                        formattedSpecial = "Ingen dagens serveras idag";
+                    } else if (Array.isArray(deal.daily_special)) {
                         formattedSpecial = deal.daily_special.map((item, index) => {
                             if (index === 1 && !item.toLowerCase().includes('vegetarisk')) {
                                 return `<br><br>${item}`;

@@ -8,12 +8,12 @@
     "price": "145 kr",
     "included_items": [
       "Sallad",
-      "måltidsdryck"
+      "Måltidsdryck"
     ],
     "lunch_hours": "11:30-14:00",
-    "special_notes": "Köp till kaffe eller te för 19kr",
+    "special_notes": "Köp till kaffe eller te för 19 kr",
     "day_of_week": "Måndagen",
-    "date": "Måndagen den 7:e april"
+    "date": "Måndagen den 7:e april 2025"
   },
   {
     "restaurant_name": "Saltimporten",
@@ -28,13 +28,13 @@
       "Äpple",
       "Potatis"
     ],
-    "lunch_hours": "11:30-14:00",
+    "lunch_hours": "11:00-14:00",
     "special_notes": "",
     "day_of_week": "Måndagen",
     "date": "Måndagen den 7:e april 2025"
   },
   {
-    "restaurant_name": "Välfärden - kök & kaffe",
+    "restaurant_name": "Välfärden",
     "url": "https://valfarden.nu/dagens-lunch/",
     "daily_special": [
       "Ostgratinerad burrito med fläsk & nöt, rökiga bönor, avokadokräm, koriandergrönt, chips & picklat",
@@ -46,8 +46,7 @@
       "salladsbuffé",
       "bröd",
       "smör",
-      "hummus",
-      "kaffe / te"
+      "hummus & kaffe / te"
     ],
     "lunch_hours": "11:30-14:00",
     "special_notes": "",
@@ -58,17 +57,11 @@
     "restaurant_name": "Friis 14",
     "url": "https://www.friis14.com/lunch",
     "daily_special": [
-      "Salladsbuffet",
-      "surdegsbröd",
-      "kaffe"
+      "Stängt idag"
     ],
     "price": "159 kr",
-    "included_items": [
-      "Salladsbuffet",
-      "surdegsbröd",
-      "kaffe"
-    ],
-    "lunch_hours": "11:30-14:00",
+    "included_items": [],
+    "lunch_hours": "Ej servering",
     "special_notes": "",
     "day_of_week": "Måndagen",
     "date": "Måndagen den 7:e april 2025"
