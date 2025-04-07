@@ -8,18 +8,19 @@
     "price": "145 kr",
     "included_items": [
       "Sallad",
-      "Måltidsdryck"
+      "måltidsdryck"
     ],
     "lunch_hours": "11:30-14:00",
-    "special_notes": "Köp till kaffe eller te för 19 kr",
+    "special_notes": "Köp till kaffe eller te för 19kr",
     "day_of_week": "Måndagen",
-    "date": "Måndagen den 7:e april 2025"
+    "date": "Måndagen den 7:e april"
   },
   {
     "restaurant_name": "Saltimporten",
     "url": "https://www.saltimporten.com/",
     "daily_special": [
-      "Fläsksida / Lingon / Äpple / Potatis"
+      "Fläsksida with Lingon and Äpple",
+      "Potatis"
     ],
     "price": "135 kr",
     "included_items": [
@@ -31,7 +32,7 @@
     "lunch_hours": "11:00-14:00",
     "special_notes": "",
     "day_of_week": "Måndagen",
-    "date": "Måndagen den 7:e april 2025"
+    "date": "7th April 2025"
   },
   {
     "restaurant_name": "Välfärden",
@@ -46,7 +47,8 @@
       "salladsbuffé",
       "bröd",
       "smör",
-      "hummus & kaffe / te"
+      "hummus",
+      "kaffe / te"
     ],
     "lunch_hours": "11:30-14:00",
     "special_notes": "",
@@ -62,6 +64,56 @@
     "price": "159 kr",
     "included_items": [],
     "lunch_hours": "Ej servering",
+    "special_notes": "",
+    "day_of_week": "Måndagen",
+    "date": "Måndagen den 7:e april 2025"
+  },
+  {
+    "restaurant_name": "Folk, Mat & Möten",
+    "url": "https://folkmatmoten.se/restaurang/",
+    "daily_special": [
+      "Rödbeta, fetaost, tranbär",
+      "Lammfärsbiff, silverlök, eldat smör"
+    ],
+    "price": "169 kr",
+    "included_items": [],
+    "lunch_hours": "11:30-14:00",
+    "special_notes": "",
+    "day_of_week": "Måndagen",
+    "date": "Måndagen den 7:e april 2025"
+  },
+  {
+    "restaurant_name": "Hamn & Peppar",
+    "url": "https://hamnochpeppar.gastrogate.com/lunch/",
+    "daily_special": [
+      "Korv stroganoff med ris",
+      "Lasagne al forno"
+    ],
+    "price": "120 kr",
+    "included_items": [
+      "Dryck",
+      "bröd",
+      "sallad",
+      "kaffe"
+    ],
+    "lunch_hours": "11:00-15:00",
+    "special_notes": "",
+    "day_of_week": "Måndagen",
+    "date": "Måndagen den 7:e april"
+  },
+  {
+    "restaurant_name": "Kolga",
+    "url": "https://kolga.gastrogate.com/lunch/",
+    "daily_special": [
+      "Dansk Fläskstek med potatis, rödkål, sås, och äppelmos",
+      "Pastaskruvar med ost och skinksås"
+    ],
+    "price": "125 kr",
+    "included_items": [
+      "Dansk Fläskstek med potatis, rödkål, sås, och äppelmos",
+      "Pastaskruvar med ost och skinksås"
+    ],
+    "lunch_hours": "11:30-14:00",
     "special_notes": "",
     "day_of_week": "Måndagen",
     "date": "Måndagen den 7:e april 2025"

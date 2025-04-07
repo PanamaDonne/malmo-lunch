@@ -291,6 +291,57 @@ def get_clemens_menu(soup, current_day):
         print(f"Error extracting Clemens Kött menu: {e}")
         return None, []
 
+def get_kolga_menu(soup, current_day):
+    """
+    Extract menu for Kolga
+    """
+    try:
+        # Get all text content
+        text_content = soup.get_text()
+        lines = [line.strip() for line in text_content.split('\n') if line.strip()]
+        print(f"Available lines for Kolga: {lines}")
+        
+        # Find the current day's menu
+        menu_items = []
+        for i, line in enumerate(lines):
+            # Handle encoding issues by checking for partial matches
+            if "ndag" in line.lower() and "april" in line.lower():  # "ndag" matches both "Måndag" and "MÃ¥ndag"
+                print(f"Found day line at {i}: {line}")
+                
+                # Look for menu items after the day line
+                # First menu item is right after the day
+                if i + 1 < len(lines):
+                    first_menu = lines[i + 1].strip()
+                    # Fix encoding for Swedish characters
+                    first_menu = first_menu.replace('Ã¤', 'ä').replace('Ã¶', 'ö').replace('Ã¥', 'å')
+                    if not any(skip in first_menu.lower() for skip in ['tel:', 'email:', 'öppettider:', 'lunch:', 'pris:', 'vecka', '|', '×', 'salladsbuff']) and len(first_menu) > 5:
+                        menu_items.append(first_menu)
+                
+                # Skip the price line (i + 2) and look for second menu item at i + 3
+                if i + 3 < len(lines):
+                    second_menu = lines[i + 3].strip()
+                    # Fix encoding for Swedish characters
+                    second_menu = second_menu.replace('Ã¤', 'ä').replace('Ã¶', 'ö').replace('Ã¥', 'å')
+                    if not any(skip in second_menu.lower() for skip in ['tel:', 'email:', 'öppettider:', 'lunch:', 'pris:', 'vecka', '|', '×', 'salladsbuff', 'tisdag', 'onsdag', 'torsdag', 'fredag']) and len(second_menu) > 5:
+                        menu_items.append(second_menu)
+                
+                if menu_items:
+                    print(f"Found menu items: {menu_items}")
+                    break
+        
+        if menu_items:
+            # Join the menu items with " / " for display
+            daily_special = " / ".join(menu_items)
+            # Return the array of menu items for included_items
+            return daily_special, menu_items
+        else:
+            print(f"No menu found for {current_day}")
+            return None, None
+            
+    except Exception as e:
+        print(f"Error in get_kolga_menu: {e}")
+        return None, None
+
 def get_restaurant_info(restaurant_name, url):
     """
     Use AI to extract lunch information from a restaurant's website
@@ -331,6 +382,17 @@ def get_restaurant_info(restaurant_name, url):
         }
         return json.dumps(data)
 
+    # Handle Kolga's alternating weekly URLs
+    if restaurant_name == "Kolga":
+        # Get the current week number
+        current_week = datetime.now().isocalendar()[1]
+        # If week number is odd, use the base URL, if even, use the /1/ URL
+        if current_week % 2 == 0:
+            url = "https://kolga.gastrogate.com/lunch/1/"
+        else:
+            url = "https://kolga.gastrogate.com/lunch/"
+        print(f"Using Kolga URL for week {current_week}: {url}")
+
     # First get the webpage content
     soup, webpage_content = get_webpage_content(url)
     if not webpage_content:
@@ -340,12 +402,15 @@ def get_restaurant_info(restaurant_name, url):
     # Clean and reduce webpage content
     cleaned_content = clean_webpage_content(soup)
     
-    # Set known prices for specific restaurants
+    # Dictionary of known prices for restaurants
     known_prices = {
         "Bullen": "145 kr",
         "Saltimporten": "135 kr",
+        "Välfärden": "115 kr",
         "Friis 14": "159 kr",
-        "Välfärden": "115 kr"
+        "Folk, Mat & Möten": "169 kr",
+        "Hamn & Peppar": "120 kr",
+        "Kolga": "125 kr"
     }
     
     # Get the price from known prices or try to extract it
@@ -422,6 +487,12 @@ def get_restaurant_info(restaurant_name, url):
             cleaned_content = f"{current_day}\n{daily_special}"  # Override cleaned content with just the relevant menu
             print(f"Found Saltimporten menu for {current_day}: {daily_special}")
             print(f"Found Saltimporten included items: {included_items}")
+    elif restaurant_name == "Kolga":
+        daily_special, included_items = get_kolga_menu(soup, current_day)
+        if daily_special:
+            cleaned_content = f"{current_day}\n{daily_special}"  # Override cleaned content with just the relevant menu
+            print(f"Found Kolga menu for {current_day}: {daily_special}")
+            print(f"Found Kolga included items: {included_items}")
 
     # Prepare the daily_special value
     daily_special_value = daily_special if daily_special else f"description of today's lunch (or array of options if multiple) - MUST be for {current_day}"
@@ -581,6 +652,18 @@ def main():
         {
             "name": "Friis 14",
             "url": "https://www.friis14.com/lunch"
+        },
+        {
+            "name": "Folk, Mat & Möten",
+            "url": "https://folkmatmoten.se/restaurang/"
+        },
+        {
+            "name": "Hamn & Peppar",
+            "url": "https://hamnochpeppar.gastrogate.com/lunch/"
+        },
+        {
+            "name": "Kolga",
+            "url": "https://kolga.gastrogate.com/lunch/"
         }
     ]
     
