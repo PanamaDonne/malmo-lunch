@@ -205,60 +205,64 @@ def get_valfarden_menu(soup, current_day):
 
 def get_saltimporten_menu(soup, current_day):
     """
-    Extract specific menu information from Saltimporten's website
+    Extract menu for Saltimporten
     """
     try:
         # Get all text content
-        text = soup.get_text()
+        text_content = soup.get_text()
+        lines = [line.strip() for line in text_content.split('\n') if line.strip()]
+        print(f"Available lines for Saltimporten: {lines}")
         
-        # Split into lines and clean
-        lines = [line.strip() for line in text.split('\n') if line.strip()]
-        
-        # Debug print
-        print(f"Looking for {current_day}'s menu in Saltimporten")
-        print("Available lines:", lines)
-        
-        # Find the current day's menu and vegetarian option
-        regular_menu = None
+        # Find the current day's menu and vegetarian options
+        menu_items = []
         vegetarian_menu = None
         
-        # Look for the current day's menu
+        # First find the current day's menu
         for i, line in enumerate(lines):
             if current_day in line:
-                print(f"Found {current_day} at line {i}")
-                # The menu item should be the next line
+                print(f"Found {current_day} at line {i}: {line}")
+                # Get the next line which contains the menu items
                 if i + 1 < len(lines):
-                    menu_text = lines[i + 1]
-                    # Skip if the line contains contact info or other non-menu text
-                    if not any(x in menu_text.lower() for x in ['tel:', 'email:', 'kontakt', 'öppet', 'hullkajen']):
-                        regular_menu = menu_text
-                        print(f"Found regular menu: {regular_menu}")
+                    menu_line = lines[i + 1].strip()
+                    # Split by spaces and filter out empty strings
+                    items = [item for item in menu_line.split() if item]
+                    if items:
+                        # Join items with " / " instead of commas
+                        menu_items = [" / ".join(items)]
+                        print(f"Found menu items: {menu_items}")
                         break
         
-        # Look for vegetarian menu
+        # Then find the vegetarian menu
         for i, line in enumerate(lines):
             if "VEGETARISKT" in line:
-                print(f"Found vegetarian section at line {i}")
-                # The vegetarian menu should be the next line
+                print(f"Found vegetarian section at line {i}: {line}")
+                # Get the next line which contains the vegetarian options
                 if i + 1 < len(lines):
-                    menu_text = lines[i + 1]
-                    # Skip if the line contains contact info or other non-menu text
-                    if not any(x in menu_text.lower() for x in ['tel:', 'email:', 'kontakt', 'öppet', 'hullkajen']):
-                        vegetarian_menu = menu_text
+                    veg_line = lines[i + 1].strip()
+                    # Split by spaces and filter out empty strings
+                    veg_items = [item for item in veg_line.split() if item]
+                    if veg_items:
+                        # Join items with " / " instead of commas
+                        vegetarian_menu = " / ".join(veg_items)
                         print(f"Found vegetarian menu: {vegetarian_menu}")
                         break
         
-        # Combine the menus if we found both
-        if regular_menu and vegetarian_menu:
-            return f"{regular_menu}\nVegetarisk: {vegetarian_menu}", []
-        elif regular_menu:
-            return regular_menu, []
-        elif vegetarian_menu:
-            return f"Vegetarisk: {vegetarian_menu}", []
-        return None, []
+        if menu_items:
+            # Add vegetarian menu if found
+            if vegetarian_menu:
+                menu_items.append(f"Vegetarisk: {vegetarian_menu}")
+            
+            # Return the menu items as a single string with " / " separator
+            daily_special = " / ".join(menu_items)
+            # Return the array of menu items for included_items
+            return daily_special, menu_items
+        else:
+            print(f"No menu found for {current_day}")
+            return None, None
+            
     except Exception as e:
-        print(f"Error extracting Saltimporten menu: {e}")
-        return None, []
+        print(f"Error in get_saltimporten_menu: {e}")
+        return None, None
 
 def get_clemens_menu(soup, current_day):
     """

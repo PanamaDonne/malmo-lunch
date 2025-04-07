@@ -19,8 +19,7 @@
     "restaurant_name": "Saltimporten",
     "url": "https://www.saltimporten.com/",
     "daily_special": [
-      "Fläsksida with Lingon and Äpple",
-      "Potatis"
+      "Fläsksida / Lingon / Äpple / Potatis"
     ],
     "price": "135 kr",
     "included_items": [
@@ -32,7 +31,7 @@
     "lunch_hours": "11:00-14:00",
     "special_notes": "",
     "day_of_week": "Måndagen",
-    "date": "7th April 2025"
+    "date": "Måndagen den 7:e april"
   },
   {
     "restaurant_name": "Välfärden",
@@ -47,8 +46,7 @@
       "salladsbuffé",
       "bröd",
       "smör",
-      "hummus",
-      "kaffe / te"
+      "hummus & kaffe / te"
     ],
     "lunch_hours": "11:30-14:00",
     "special_notes": "",
@@ -93,13 +91,12 @@
     "included_items": [
       "Dryck",
       "bröd",
-      "sallad",
-      "kaffe"
+      "sallad och kaffe"
     ],
     "lunch_hours": "11:00-15:00",
     "special_notes": "",
     "day_of_week": "Måndagen",
-    "date": "Måndagen den 7:e april"
+    "date": "Måndagen 7 april"
   },
   {
     "restaurant_name": "Kolga",
