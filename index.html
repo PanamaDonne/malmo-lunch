@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dagens rätt - Malmö | Dagliga lunchmenyer i Malmö</title>
+    <title>Dagens rätter - Malmö | Dagliga lunchmenyer i Malmö</title>
     <meta name="description" content="Uppdaterade dagliga lunchmenyer från Malmös bästa restauranger. Inkluderar Bullen, Saltimporten, Välfärden och Friis 14. Priser och öppettider inkluderade.">
     <meta name="keywords" content="lunch malmö, dagens rätt malmö, lunchmeny malmö, restauranger malmö, bullen malmö, saltimporten malmö, välfärden malmö, friis 14 malmö">
     <link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;500;600&display=swap" rel="stylesheet">
@@ -81,11 +81,14 @@
 </head>
 <body>
     <header>
-        <h1 id="page-title">Dagens rätt - Malmö</h1>
-        <a href="https://buymeacoffee.com/createdbydt" target="_blank" class="coffee-button">
-            <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Köp mig en kaffe">
-        </a>
-        <div id="last-updated"></div>
+        <h1 id="page-title">DAGENS RÄTTER - MALMÖ</h1>
+        <h2 id="last-updated"></h2>
+        <div style="display: flex; align-items: center; margin-bottom: 20px; border: 2px solid black; padding: 10px; border-radius: 8px; max-width: fit-content;">
+            <a href="https://buymeacoffee.com/createdbydt" target="_blank" class="coffee-button">
+                <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Köp mig en kaffe">
+            </a>
+            <span style="margin-left: 10px; font-size: 1.2em;">Ah du, köp en kaffe ti maj</span>
+        </div>
     </header>
     <main>
         <div id="deals-container"></div>
@@ -112,7 +115,7 @@
             const date = new Date(dateString);
             const swedishDate = new Date(date.toLocaleString('en-US', { timeZone: 'Europe/Stockholm' }));
             
-            const weekdays = ['Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag', 'Söndag'];
+            const weekdays = ['Måndagen', 'Tisdagen', 'Onsdagen', 'Torsdagen', 'Fredagen', 'Lördagen', 'Söndagen'];
             const months = ['januari', 'februari', 'mars', 'april', 'maj', 'juni', 'juli', 'augusti', 'september', 'oktober', 'november', 'december'];
             
             const day = swedishDate.getDate();
@@ -124,7 +127,7 @@
             let weekdayIndex = swedishDate.getDay();
             weekdayIndex = weekdayIndex === 0 ? 6 : weekdayIndex - 1; // Convert Sunday (0) to 6, and shift other days back
             
-            return `${weekdays[weekdayIndex]} den ${day}${daySuffix} ${months[swedishDate.getMonth()]} ${swedishDate.getFullYear()}`;
+            return `${weekdays[weekdayIndex]} den ${day}:e ${months[swedishDate.getMonth()]} ${swedishDate.getFullYear()}`;
         }
 
         async function loadDeals() {
