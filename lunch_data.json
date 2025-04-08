@@ -3,7 +3,7 @@
     "restaurant_name": "Bullen",
     "url": "https://www.bullen.nu/sv/lunch/",
     "daily_special": [
-      "Stekt falukorv med senap och stuvad blomkål"
+      "Fish´chips med mushy peas och tartarsås"
     ],
     "price": "145 kr",
     "included_items": [
@@ -12,33 +12,28 @@
     ],
     "lunch_hours": "11:30-14:00",
     "special_notes": "Köp till kaffe eller te för 19kr",
-    "day_of_week": "Måndagen",
-    "date": "Måndagen den 7:e april"
+    "day_of_week": "Tisdagen",
+    "date": "Tisdagen den 8:e april 2025"
   },
   {
     "restaurant_name": "Saltimporten",
     "url": "https://www.saltimporten.com/",
     "daily_special": [
-      "Fläsksida / Lingon / Äpple / Potatis"
+      "Oxtartar / Melon / Ricotta / Basilika"
     ],
     "price": "135 kr",
-    "included_items": [
-      "Fläsksida",
-      "Lingon",
-      "Äpple",
-      "Potatis"
-    ],
+    "included_items": [],
     "lunch_hours": "11:00-14:00",
     "special_notes": "",
-    "day_of_week": "Måndagen",
-    "date": "Måndagen den 7:e april"
+    "day_of_week": "Tisdagen",
+    "date": "Tisdagen den 8:e april 2025"
   },
   {
     "restaurant_name": "Välfärden",
     "url": "https://valfarden.nu/dagens-lunch/",
     "daily_special": [
-      "Ostgratinerad burrito med fläsk & nöt, rökiga bönor, avokadokräm, koriandergrönt, chips & picklat",
-      "Kryddig Indisk spenatcurry med tofu, chutney, raita med gurka & mynta samt ris"
+      "Fiskgratäng med torsk & räkor i gräddig vitvinssås, dill, citron, potatismos & ärtor",
+      "BBQ-rostad blomkål med chimichurri, rostad majs & len sötpotatiskräm"
     ],
     "price": "115 kr",
     "included_items": [
@@ -46,25 +41,30 @@
       "salladsbuffé",
       "bröd",
       "smör",
-      "hummus & kaffe / te"
+      "hummus",
+      "kaffe / te"
     ],
     "lunch_hours": "11:30-14:00",
     "special_notes": "",
-    "day_of_week": "Måndagen",
-    "date": "Måndagen den 7:e april 2025"
+    "day_of_week": "Tisdagen",
+    "date": "Tisdagen den 8:e april 2025"
   },
   {
     "restaurant_name": "Friis 14",
     "url": "https://www.friis14.com/lunch",
     "daily_special": [
-      "Stängt idag"
+      "Långa med citronsås, bakad purjolök & potatismos"
     ],
     "price": "159 kr",
-    "included_items": [],
-    "lunch_hours": "Ej servering",
+    "included_items": [
+      "Salladsbuffet",
+      "surdegsbröd",
+      "kaffe"
+    ],
+    "lunch_hours": "11:30-14:00",
     "special_notes": "",
-    "day_of_week": "Måndagen",
-    "date": "Måndagen den 7:e april 2025"
+    "day_of_week": "Tisdagen",
+    "date": "Tisdagen den 8:e april 2025"
   },
   {
     "restaurant_name": "Folk, Mat & Möten",
@@ -74,11 +74,13 @@
       "Lammfärsbiff, silverlök, eldat smör"
     ],
     "price": "169 kr",
-    "included_items": [],
+    "included_items": [
+      "kaffe"
+    ],
     "lunch_hours": "11:30-14:00",
     "special_notes": "",
-    "day_of_week": "Måndagen",
-    "date": "Måndagen den 7:e april 2025"
+    "day_of_week": "Tisdagen",
+    "date": "Tisdagen den 8:e april 2025"
   },
   {
     "restaurant_name": "Hamn & Peppar",
@@ -91,12 +93,13 @@
     "included_items": [
       "Dryck",
       "bröd",
-      "sallad och kaffe"
+      "sallad",
+      "kaffe"
     ],
     "lunch_hours": "11:00-15:00",
     "special_notes": "",
-    "day_of_week": "Måndagen",
-    "date": "Måndagen 7 april"
+    "day_of_week": "Tisdagen",
+    "date": "Tisdagen den 8:e april 2025"
   },
   {
     "restaurant_name": "Kolga",
@@ -112,7 +115,7 @@
     ],
     "lunch_hours": "11:30-14:00",
     "special_notes": "",
-    "day_of_week": "Måndagen",
-    "date": "Måndagen den 7:e april 2025"
+    "day_of_week": "Tisdagen",
+    "date": "Tisdagen den 8:e april 2025"
   }
 ]
