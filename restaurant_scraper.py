@@ -88,18 +88,31 @@ def get_bullen_menu(soup, current_day):
         print(f"Looking for {current_day}'s menu in Bullen")
         print("Available lines:", lines)
         
+        # Get current date components
+        current_date = datetime.now()
+        current_day_num = current_date.day
+        current_month = current_date.month
+        
+        # Get the day name without 'en' suffix for matching
+        day_name = current_day.replace('en', '')
+        
+        # Known included items for Bullen
+        included_items = ["Sallad", "måltidsdryck"]
+        
         # Find the current day's menu
         for i, line in enumerate(lines):
-            if current_day in line:
-                print(f"Found {current_day} at line {i}")
-                # The menu item should be the next line
+            # Check for exact format like "Torsdag 10/4"
+            if day_name in line and f"{current_day_num}/{current_month}" in line:
+                print(f"Found exact day match at line {i}: {line}")
+                # Get the menu item from the next line
                 if i + 1 < len(lines):
-                    menu_item = lines[i + 1]
+                    menu_item = lines[i + 1].strip()
                     print(f"Found menu item: {menu_item}")
                     # Make sure it's not another day or a price
-                    if not any(day in menu_item for day in ['Måndagen', 'Tisdagen', 'Onsdagen', 'Torsdagen', 'Fredagen', 'Lördagen', 'Söndagen']) and not 'kr' in menu_item:
-                        included_items = ["Sallad", "måltidsdryck"]  # Known included items for Bullen
+                    if not any(day in menu_item for day in ['Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag']) and not 'kr' in menu_item:
                         return menu_item, included_items
+        
+        print(f"No menu found for {current_day}")
         return None, []
     except Exception as e:
         print(f"Error extracting Bullen menu: {e}")
@@ -653,22 +666,6 @@ def main():
             "name": "Välfärden",
             "url": "https://valfarden.nu/dagens-lunch/"
         },
-        {
-            "name": "Friis 14",
-            "url": "https://www.friis14.com/lunch"
-        },
-        {
-            "name": "Folk, Mat & Möten",
-            "url": "https://folkmatmoten.se/restaurang/"
-        },
-        {
-            "name": "Hamn & Peppar",
-            "url": "https://hamnochpeppar.gastrogate.com/lunch/"
-        },
-        {
-            "name": "Kolga",
-            "url": "https://kolga.gastrogate.com/lunch/"
-        }
     ]
     
     print(f"Starting lunch menu update for {datetime.now().strftime('%Y-%m-%d')}")
