@@ -19,17 +19,10 @@
   {
     "restaurant_name": "Saltimporten",
     "url": "https://www.saltimporten.com/",
-    "daily_special": [
-      "Tupp / Pakchoi / Chili / Jordnöt"
-    ],
+    "daily_special": "description of today's lunch (or array of options if multiple) - MUST be for Torsdagen",
     "price": "135 kr",
-    "included_items": [
-      "Tupp",
-      "Pakchoi",
-      "Chili",
-      "Jordnöt"
-    ],
-    "lunch_hours": "11:00-14:00",
+    "included_items": [],
+    "lunch_hours": "11:30-14:00",
     "special_notes": "",
     "day_of_week": "Torsdagen",
     "date": "Torsdagen den 10:e april 2025"
@@ -37,19 +30,9 @@
   {
     "restaurant_name": "Välfärden",
     "url": "https://valfarden.nu/dagens-lunch/",
-    "daily_special": [
-      "Röd thaicurry med  kokosgrädde, lime, citrongräs, broccoli samt pilaffris & örtgrönt",
-      "Rödbetsbiffar med svarta bönor & prästostlingon, svampsås, örtrostad potatis & gurka"
-    ],
+    "daily_special": "description of today's lunch (or array of options if multiple) - MUST be for Torsdagen",
     "price": "115 kr",
-    "included_items": [
-      "vatten",
-      "salladsbuffé",
-      "bröd",
-      "smör",
-      "hummus",
-      "kaffe / te"
-    ],
+    "included_items": [],
     "lunch_hours": "11:30-14:00",
     "special_notes": "",
     "day_of_week": "Torsdagen",
