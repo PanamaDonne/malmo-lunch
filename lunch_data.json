@@ -13,29 +13,29 @@
     ],
     "lunch_hours": "11:30-14:00",
     "special_notes": "",
-    "day_of_week": "Fredagen",
-    "date": "Fredagen den 11:e april 2025"
+    "day_of_week": "Måndagen",
+    "date": "Måndagen den 14:e april 2025"
   },
   {
     "restaurant_name": "Saltimporten",
     "url": "https://www.saltimporten.com/",
-    "daily_special": "description of today's lunch (or array of options if multiple) - MUST be for Fredagen",
+    "daily_special": "description of today's lunch (or array of options if multiple) - MUST be for Måndagen",
     "price": "135 kr",
     "included_items": [],
     "lunch_hours": "11:30-14:00",
     "special_notes": "",
-    "day_of_week": "Fredagen",
-    "date": "Fredagen den 11:e april 2025"
+    "day_of_week": "Måndagen",
+    "date": "Måndagen den 14:e april 2025"
   },
   {
     "restaurant_name": "Välfärden",
     "url": "https://valfarden.nu/dagens-lunch/",
-    "daily_special": "description of today's lunch (or array of options if multiple) - MUST be for Fredagen",
+    "daily_special": "description of today's lunch (or array of options if multiple) - MUST be for Måndagen",
     "price": "115 kr",
     "included_items": [],
     "lunch_hours": "11:30-14:00",
     "special_notes": "",
-    "day_of_week": "Fredagen",
-    "date": "Fredagen den 11:e april 2025"
+    "day_of_week": "Måndagen",
+    "date": "Måndagen den 14:e april 2025"
   }
 ]
