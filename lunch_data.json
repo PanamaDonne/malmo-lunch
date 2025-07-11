@@ -2,34 +2,34 @@
   {
     "restaurant_name": "Bullen",
     "url": "https://www.bullen.nu/sv/lunch/",
-    "daily_special": "description of today's lunch (or array of options if multiple) - MUST be for Torsdagen",
+    "daily_special": "description of today's lunch (or array of options if multiple) - MUST be for Fredagen",
     "price": "145 kr",
     "included_items": [],
     "lunch_hours": "11:30-14:00",
     "special_notes": "",
-    "day_of_week": "Torsdagen",
-    "date": "Torsdagen den 10:e juli 2025"
+    "day_of_week": "Fredagen",
+    "date": "Fredagen den 11:e juli 2025"
   },
   {
     "restaurant_name": "Saltimporten",
     "url": "https://www.saltimporten.com/",
-    "daily_special": "description of today's lunch (or array of options if multiple) - MUST be for Torsdagen",
+    "daily_special": "description of today's lunch (or array of options if multiple) - MUST be for Fredagen",
     "price": "135 kr",
     "included_items": [],
     "lunch_hours": "11:30-14:00",
     "special_notes": "",
-    "day_of_week": "Torsdagen",
-    "date": "Torsdagen den 10:e juli 2025"
+    "day_of_week": "Fredagen",
+    "date": "Fredagen den 11:e juli 2025"
   },
   {
     "restaurant_name": "Välfärden",
     "url": "https://valfarden.nu/dagens-lunch/",
-    "daily_special": "description of today's lunch (or array of options if multiple) - MUST be for Torsdagen",
+    "daily_special": "description of today's lunch (or array of options if multiple) - MUST be for Fredagen",
     "price": "115 kr",
     "included_items": [],
     "lunch_hours": "11:30-14:00",
     "special_notes": "",
-    "day_of_week": "Torsdagen",
-    "date": "Torsdagen den 10:e juli 2025"
+    "day_of_week": "Fredagen",
+    "date": "Fredagen den 11:e juli 2025"
   }
 ]
