@@ -13,29 +13,7 @@
     ],
     "lunch_hours": "11:30-14:00",
     "special_notes": "",
-    "day_of_week": "Måndagen",
-    "date": "Måndagen den 25:e augusti 2025"
-  },
-  {
-    "restaurant_name": "Saltimporten",
-    "url": "https://www.saltimporten.com/",
-    "daily_special": "description of today's lunch (or array of options if multiple) - MUST be for Måndagen",
-    "price": "135 kr",
-    "included_items": [],
-    "lunch_hours": "11:30-14:00",
-    "special_notes": "",
-    "day_of_week": "Måndagen",
-    "date": "Måndagen den 25:e augusti 2025"
-  },
-  {
-    "restaurant_name": "Välfärden",
-    "url": "https://valfarden.nu/dagens-lunch/",
-    "daily_special": "description of today's lunch (or array of options if multiple) - MUST be for Måndagen",
-    "price": "115 kr",
-    "included_items": [],
-    "lunch_hours": "11:30-14:00",
-    "special_notes": "",
-    "day_of_week": "Måndagen",
-    "date": "Måndagen den 25:e augusti 2025"
+    "day_of_week": "Tisdagen",
+    "date": "Tisdagen den 26:e augusti 2025"
   }
 ]
